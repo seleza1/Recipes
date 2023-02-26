@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     let userDefaults = UserDefaults.standard
 
+    var person: [String : String] = [:]
+
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -56,16 +58,19 @@ class ViewController: UIViewController {
         addView()
         setConstraints()
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
-        loginTextField.text = userDefaults.object(forKey: "login") as? String
-        passwordTextField.text = userDefaults.object(forKey: "password") as? String
+        loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
     }
 
     @objc func registerUser() {
-        let login = loginTextField.text
-        userDefaults.set(login, forKey: "login")
-        let password = passwordTextField.text
-        userDefaults.set(password, forKey: "password")
+
+        let person = [loginTextField.text : passwordTextField.text]
+        userDefaults.set(person, forKey: "password")
         print("save data")
+    }
+
+    @objc func signIn() {
+        print(person)
     }
 }
 

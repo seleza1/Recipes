@@ -12,6 +12,7 @@
 		CE5A34892997853D00164496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A34882997853D00164496 /* ViewController.swift */; };
 		CE5A348E2997854300164496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5A348D2997854300164496 /* Assets.xcassets */; };
 		CE5A34912997854300164496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5A348F2997854300164496 /* LaunchScreen.storyboard */; };
+		CEA530BA29ABBF4D001E1522 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530B929ABBF4D001E1522 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CE5A348D2997854300164496 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5A34902997854300164496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5A34922997854300164496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA530B929ABBF4D001E1522 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		CE5A349A2997862900164496 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEA530B929ABBF4D001E1522 /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				CE5A34892997853D00164496 /* ViewController.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
+				CEA530BA29ABBF4D001E1522 /* Person.swift in Sources */,
 				CE5A34872997853D00164496 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
