@@ -56,13 +56,15 @@ class ViewController: UIViewController {
         addView()
         setConstraints()
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
-        loginTextField.text = userDefaults.object(forKey: "dict") as? String
+        loginTextField.text = userDefaults.object(forKey: "login") as? String
+        passwordTextField.text = userDefaults.value(forKey: "password") as? String
     }
 
     @objc func registerUser() {
-        let dictionary = loginTextField.text
-        userDefaults.set(dictionary, forKey: "dict")
-
+        let login = loginTextField.text
+        userDefaults.set(login, forKey: "login")
+        let password = passwordTextField.text
+        userDefaults.set(password, forKey: "password")
         print("save data")
     }
 }
