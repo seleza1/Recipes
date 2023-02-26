@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     let userDefaults = UserDefaults.standard
 
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension HomeViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
 
@@ -96,7 +96,6 @@ extension ViewController {
             registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 250),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
-
 
         ])
     }
