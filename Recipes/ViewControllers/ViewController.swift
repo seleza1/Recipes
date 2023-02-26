@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .black
         textField.placeholder = "Телефон или email"
+        textField.placeholder
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -63,19 +64,19 @@ extension ViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
 
-            loginTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            loginTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
             loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 50),
+            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 16),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 200),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 32),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 200),
+            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 250),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
 
