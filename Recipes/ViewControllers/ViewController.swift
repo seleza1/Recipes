@@ -12,9 +12,8 @@ class ViewController: UIViewController {
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black
+        textField.backgroundColor = .white
         textField.placeholder = "Телефон или email"
-        textField.placeholder
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -22,7 +21,7 @@ class ViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black
+        textField.backgroundColor = .white
         textField.placeholder = "Пароль"
         textField.borderStyle = .roundedRect
 
@@ -51,8 +50,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
-       // view.backgroundColor = .white
+        view.backgroundColor = .white
         addView()
         setConstraints()
     }
