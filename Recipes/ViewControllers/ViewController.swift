@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let userDefaults = UserDefaults.standard
+
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -53,9 +55,16 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         addView()
         setConstraints()
+        registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
+        loginTextField.text = userDefaults.object(forKey: "dict") as? String
     }
 
+    @objc func registerUser() {
+        let dictionary = loginTextField.text
+        userDefaults.set(dictionary, forKey: "dict")
 
+        print("save data")
+    }
 }
 
 extension ViewController {
