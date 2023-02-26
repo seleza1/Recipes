@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         setConstraints()
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginTextField.text = userDefaults.object(forKey: "login") as? String
-        passwordTextField.text = userDefaults.value(forKey: "password") as? String
+        passwordTextField.text = userDefaults.object(forKey: "password") as? String
     }
 
     @objc func registerUser() {
