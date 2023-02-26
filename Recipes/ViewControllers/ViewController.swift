@@ -11,13 +11,13 @@ class ViewController: UIViewController {
 
     let userDefaults = UserDefaults.standard
 
-    var person: [String : String] = [:]
+    var person: [String: String] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .white
-        textField.placeholder = "Телефон или email"
+        textField.placeholder = "Телефон или почта"
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -57,9 +57,12 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         addView()
         setConstraints()
+
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
+
+        person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
+        passwordTextField.isSecureTextEntry = true
     }
 
     @objc func registerUser() {
