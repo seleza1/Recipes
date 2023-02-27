@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     let userDefaults = UserDefaults.standard
 
-    var person: [String: String] = [:]
+    var person: [String : String] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 
-        person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
+        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
         passwordTextField.isSecureTextEntry = true
     }
 
@@ -73,8 +73,11 @@ class HomeViewController: UIViewController {
     }
 
     @objc func signIn() {
-        presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
-        print(person)
+        if person == userDefaults.object(forKey: "password") as? [String : String] {
+
+        }
+        //presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
+        //print(person)
     }
 }
 
