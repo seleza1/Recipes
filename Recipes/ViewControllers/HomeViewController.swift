@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
 
         if personal == person {
-            present(RecipesVC, animated: true)
+            navigationController?.pushViewController(RecipesVC, animated: true)
             loginTextField.text = ""
             passwordTextField.text = ""
             print(personal)
