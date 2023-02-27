@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
     private let RecipesVC = RecipesViewController()
-    private var person: [String : String] = [:]
+    private var person: [String: String] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -52,11 +52,23 @@ class HomeViewController: UIViewController {
         return button
     }()
 
-    private let label: UILabel = {
+    private let failureLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Oops, такой пользователь уже существует"
         label.textColor = .red
+        label.font = UIFont(name: label.font.fontName, size: 12)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+
+        return label
+    }()
+
+    private let succesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Вы зарегистрировались!"
+        label.textColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         label.font = UIFont(name: label.font.fontName, size: 12)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -73,15 +85,15 @@ class HomeViewController: UIViewController {
         setupKeyboard()
         addTarget()
 
-        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
+        person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
 
     }
 
     @objc func registerUser() {
-        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
-            label.isHidden = false
+            failureLabel.isHidden = false
         }
 
         if passwordTextField.text == "" {
@@ -90,16 +102,16 @@ class HomeViewController: UIViewController {
             let person = [loginTextField.text: passwordTextField.text]
             userDefaults.set(person, forKey: "password")
 
-            print("Вы успешно зарегистрировались")
+            succesLabel.isHidden = false
         }
     }
 
     @objc func signIn() {
-        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
             navigationController?.pushViewController(RecipesVC, animated: true)
-            label.isHidden = true
+            failureLabel.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
             print(personal)
@@ -129,10 +141,14 @@ extension HomeViewController {
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
 
-            label.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 1),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            label.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 1)
+            failureLabel.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 1),
+            failureLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            failureLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            failureLabel.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 1),
+
+            succesLabel.bottomAnchor.constraint(equalTo: loginTextField.topAnchor, constant: -8),
+            succesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            succesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
 
         ])
     }
@@ -142,7 +158,8 @@ extension HomeViewController {
         view.addSubview(registerButton)
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(label)
+        view.addSubview(failureLabel)
+        view.addSubview(succesLabel)
     }
 
     private func setupKeyboard() {
@@ -158,7 +175,8 @@ extension HomeViewController {
 
     private func updateUi() {
         view.backgroundColor = .white
-        label.isHidden = true
+        failureLabel.isHidden = true
+        succesLabel.isHidden = true
     }
 }
 
