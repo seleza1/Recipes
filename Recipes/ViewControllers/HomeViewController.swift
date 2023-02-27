@@ -99,6 +99,7 @@ class HomeViewController: UIViewController {
 
         if personal == person {
             navigationController?.pushViewController(RecipesVC, animated: true)
+            label.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
             print(personal)
