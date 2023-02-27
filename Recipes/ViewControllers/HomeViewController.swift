@@ -9,10 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    let userDefaults = UserDefaults.standard
-    let RecipesVC = RecipesViewController()
-
-    var person: [String : String] = [:]
+    private let userDefaults = UserDefaults.standard
+    private let RecipesVC = RecipesViewController()
+    private var person: [String : Int] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -56,16 +55,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        passwordTextField.keyboardType = .asciiCapableNumberPad
         view.backgroundColor = .white
         addView()
         setConstraints()
+        setupKeyboard()
+        addTarget()
 
-        registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-
-        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
-        passwordTextField.isSecureTextEntry = true
+        person = userDefaults.object(forKey: "password") as? [String : Int] ?? [:]
 
     }
 
@@ -82,12 +78,13 @@ class HomeViewController: UIViewController {
     }
 
     @objc func signIn() {
-        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String : Int] ?? [:]
 
         if personal == person {
             present(RecipesVC, animated: true)
             loginTextField.text = ""
             passwordTextField.text = ""
+            print(personal)
         } else {
             presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
             passwordTextField.text = ""
@@ -124,6 +121,17 @@ extension HomeViewController {
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
 
+    }
+
+    private func setupKeyboard() {
+        passwordTextField.keyboardType = .asciiCapableNumberPad
+        passwordTextField.isSecureTextEntry = true
+
+    }
+
+    private func addTarget() {
+        registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }
 
