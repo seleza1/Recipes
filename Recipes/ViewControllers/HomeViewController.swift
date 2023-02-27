@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
     private let RecipesVC = RecipesViewController()
-    private var person: [String : Int] = [:]
+    private var person: [String : String] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -54,19 +54,18 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
+        
         addView()
         setConstraints()
         setupKeyboard()
         addTarget()
 
-        person = userDefaults.object(forKey: "password") as? [String : Int] ?? [:]
+        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
 
     }
 
     @objc func registerUser() {
-
         if passwordTextField.text == "" {
             presentSimpleAlert(title: "Oops", message: "Введите необходимые поля")
         } else {
@@ -78,7 +77,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc func signIn() {
-        let personal = [loginTextField.text: passwordTextField.text] as? [String : Int] ?? [:]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
 
         if personal == person {
             present(RecipesVC, animated: true)
@@ -120,11 +119,10 @@ extension HomeViewController {
         view.addSubview(registerButton)
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
-
     }
 
     private func setupKeyboard() {
-        passwordTextField.keyboardType = .asciiCapableNumberPad
+        //passwordTextField.keyboardType = .asciiCapableNumberPad
         passwordTextField.isSecureTextEntry = true
 
     }
