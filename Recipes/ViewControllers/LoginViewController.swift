@@ -7,10 +7,10 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
-    private let RecipesVC = RecipesViewController()
+    private let RecipesVC = MainTabBarController()
     private var person: [String: String] = [:]
 
     private let loginTextField: UITextField = {
@@ -84,8 +84,7 @@ class HomeViewController: UIViewController {
         setConstraints()
         setupKeyboard()
         addTarget()
-
-        person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
+        dataRecovery()
 
     }
 
@@ -108,7 +107,7 @@ class HomeViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
-            navigationController?.pushViewController(RecipesVC, animated: true)
+            present(MainTabBarController(), animated: true)
             failureLabel.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
@@ -119,7 +118,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController {
+extension LoginViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
 
@@ -160,6 +159,11 @@ extension HomeViewController {
         view.addSubview(succesLabel)
     }
 
+    private func dataRecovery() {
+        person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
+
+    }
+
     private func setupKeyboard() {
         //passwordTextField.keyboardType = .asciiCapableNumberPad
         passwordTextField.isSecureTextEntry = true
@@ -178,7 +182,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
