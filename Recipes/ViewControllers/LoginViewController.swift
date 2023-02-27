@@ -10,7 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
-    private let RecipesVC = MainTabBarController()
+    private let recipesVC = MainTabBarController()
     private var person: [String: String] = [:]
 
     private let loginTextField: UITextField = {
@@ -85,7 +85,6 @@ class LoginViewController: UIViewController {
         setupKeyboard()
         addTarget()
         dataRecovery()
-
     }
 
     @objc func registerUser() {
@@ -107,7 +106,9 @@ class LoginViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
-            present(MainTabBarController(), animated: true)
+            recipesVC.modalPresentationStyle = .fullScreen
+            present(recipesVC, animated: true, completion: nil)
+            
             failureLabel.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
