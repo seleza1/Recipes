@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     let userDefaults = UserDefaults.standard
+    let RecipesVC = RecipesViewController()
 
     var person: [String : String] = [:]
 
@@ -73,11 +74,14 @@ class HomeViewController: UIViewController {
     }
 
     @objc func signIn() {
-        if person == userDefaults.object(forKey: "password") as? [String : String] {
+        let personal = [loginTextField.text: passwordTextField.text]
+
+        if personal == userDefaults.object(forKey: "password") as? [String : String] {
+            present(RecipesVC, animated: true)
+        } else {
+            presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
 
         }
-        //presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
-        //print(person)
     }
 }
 
