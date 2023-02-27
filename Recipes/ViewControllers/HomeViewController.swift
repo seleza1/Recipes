@@ -66,6 +66,12 @@ class HomeViewController: UIViewController {
     }
 
     @objc func registerUser() {
+        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
+
+        if personal == person {
+            presentSimpleAlert(title: "Oops", message: "Такой пользователь уже существует", textField: passwordTextField)
+        }
+
         if passwordTextField.text == "" {
             presentSimpleAlert(title: "Oops", message: "Введите необходимые поля")
         } else {
