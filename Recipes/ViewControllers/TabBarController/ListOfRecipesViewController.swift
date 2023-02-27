@@ -9,11 +9,58 @@ import UIKit
 
 class ListOfRecipesViewController: UIViewController {
 
+    private let identifier = "cell"
+
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        return tableView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Список рецептов"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        addView()
+        setConstraints()
+        updateUi()
 
     }
 
+}
+
+extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        cell.textLabel?.text = "dw"
+        return cell
+    }
+
+
+}
+
+extension ListOfRecipesViewController {
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    private func updateUi() {
+        view.backgroundColor = .white
+        title = "Список рецептов"
+    }
+
+    private func addView() {
+        view.addSubview(tableView)
+    }
 }
