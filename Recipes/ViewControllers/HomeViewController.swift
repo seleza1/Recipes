@@ -52,11 +52,23 @@ class HomeViewController: UIViewController {
         return button
     }()
 
+    private let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Oops, такой пользователь уже существует"
+        label.textColor = .red
+        label.font = UIFont(name: label.font.fontName, size: 12)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
+
         addView()
+        updateUi()
         setConstraints()
         setupKeyboard()
         addTarget()
@@ -69,7 +81,7 @@ class HomeViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
 
         if personal == person {
-            presentSimpleAlert(title: "Oops", message: "Такой пользователь уже существует", textField: passwordTextField)
+            label.isHidden = false
         }
 
         if passwordTextField.text == "" {
@@ -116,6 +128,11 @@ extension HomeViewController {
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
 
+            label.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 1),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            label.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 1)
+
         ])
     }
 
@@ -124,6 +141,7 @@ extension HomeViewController {
         view.addSubview(registerButton)
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
+        view.addSubview(label)
     }
 
     private func setupKeyboard() {
@@ -135,6 +153,11 @@ extension HomeViewController {
     private func addTarget() {
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+    }
+
+    private func updateUi() {
+        view.backgroundColor = .white
+        label.isHidden = true
     }
 }
 
