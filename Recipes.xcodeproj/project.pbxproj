@@ -14,6 +14,7 @@
 		CE5A34912997854300164496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5A348F2997854300164496 /* LaunchScreen.storyboard */; };
 		CEA530BA29ABBF4D001E1522 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530B929ABBF4D001E1522 /* Person.swift */; };
 		CEA530BC29ABE04F001E1522 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530BB29ABE04F001E1522 /* RecipesViewController.swift */; };
+		CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530BF29AC8171001E1522 /* UiViewController + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE5A34922997854300164496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA530B929ABBF4D001E1522 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEA530BB29ABE04F001E1522 /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
+		CEA530BF29AC8171001E1522 /* UiViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiViewController + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		CE5A34832997853D00164496 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				CEA530BD29AC813C001E1522 /* Extension */,
 				CE5A349B2997863000164496 /* Applications */,
 				CE5A349A2997862900164496 /* Model */,
 				CE5A349D299786A500164496 /* ViewControllers */,
@@ -116,6 +119,22 @@
 				CEA530BB29ABE04F001E1522 /* RecipesViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CEA530BD29AC813C001E1522 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEA530BE29AC8146001E1522 /* UiKit */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CEA530BE29AC8146001E1522 /* UiKit */ = {
+			isa = PBXGroup;
+			children = (
+				CEA530BF29AC8171001E1522 /* UiViewController + Extension.swift */,
+			);
+			path = UiKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */,
 				CE5A34892997853D00164496 /* HomeViewController.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
 				CEA530BA29ABBF4D001E1522 /* Person.swift in Sources */,

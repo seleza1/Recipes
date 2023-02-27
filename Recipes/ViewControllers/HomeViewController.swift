@@ -67,12 +67,13 @@ class HomeViewController: UIViewController {
 
     @objc func registerUser() {
 
-        let person = [loginTextField.text : passwordTextField.text]
+        let person = [loginTextField.text: passwordTextField.text]
         userDefaults.set(person, forKey: "password")
         print("save data")
     }
 
     @objc func signIn() {
+        presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
         print(person)
     }
 }
