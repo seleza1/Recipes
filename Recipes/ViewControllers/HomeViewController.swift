@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     let RecipesVC = RecipesViewController()
 
-    var person: [String : String] = [:]
+    var person: [String : Int] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -55,28 +55,31 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        passwordTextField.keyboardType = .asciiCapableNumberPad
         view.backgroundColor = .white
         addView()
         setConstraints()
+        
 
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 
-        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
+        person = userDefaults.object(forKey: "password") as? [String : Int] ?? [:]
         passwordTextField.isSecureTextEntry = true
     }
 
     @objc func registerUser() {
 
-        let person = [loginTextField.text: passwordTextField.text]
+        let person = [loginTextField.text: passwordTextField.text] //as? [String : Int] ?? [:]
         userDefaults.set(person, forKey: "password")
         print("Вы успешно зарегистрировались")
     }
 
     @objc func signIn() {
-        let personal = [loginTextField.text: passwordTextField.text]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String : Int] ?? [:]
 
-        if personal == userDefaults.object(forKey: "password") as? [String : String] {
+        if personal == person {
             present(RecipesVC, animated: true)
             loginTextField.text = ""
             passwordTextField.text = ""
