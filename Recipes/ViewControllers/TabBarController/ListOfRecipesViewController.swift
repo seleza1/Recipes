@@ -20,10 +20,8 @@ class ListOfRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
         addView()
+        updateTableView()
         setConstraints()
         updateUi()
 
@@ -33,13 +31,17 @@ class ListOfRecipesViewController: UIViewController {
 
 extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = "dw"
+        cell.textLabel?.text = "zzz"
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        present(DetailsViewController(), animated: true)
     }
 
 
@@ -53,6 +55,12 @@ extension ListOfRecipesViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func updateTableView() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     private func updateUi() {
