@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
 
         let person = [loginTextField.text: passwordTextField.text]
         userDefaults.set(person, forKey: "password")
-        print("save data")
+        print("Вы успешно зарегистрировались")
     }
 
     @objc func signIn() {
@@ -78,9 +78,11 @@ class HomeViewController: UIViewController {
 
         if personal == userDefaults.object(forKey: "password") as? [String : String] {
             present(RecipesVC, animated: true)
+            loginTextField.text = ""
+            passwordTextField.text = ""
         } else {
             presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
-
+            passwordTextField.text = ""
         }
     }
 }
