@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     let RecipesVC = RecipesViewController()
 
-    var person: [String : Int] = [:]
+    var person: [String : String] = [:]
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -60,24 +60,29 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         addView()
         setConstraints()
-        
 
         registerButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 
-        person = userDefaults.object(forKey: "password") as? [String : Int] ?? [:]
+        person = userDefaults.object(forKey: "password") as? [String : String] ?? [:]
         passwordTextField.isSecureTextEntry = true
+
     }
 
     @objc func registerUser() {
 
-        let person = [loginTextField.text: passwordTextField.text] //as? [String : Int] ?? [:]
-        userDefaults.set(person, forKey: "password")
-        print("Вы успешно зарегистрировались")
+        if passwordTextField.text == "" {
+            presentSimpleAlert(title: "Oops", message: "Введите необходимые поля")
+        } else {
+            let person = [loginTextField.text: passwordTextField.text]
+            userDefaults.set(person, forKey: "password")
+
+            print("Вы успешно зарегистрировались")
+        }
     }
 
     @objc func signIn() {
-        let personal = [loginTextField.text: passwordTextField.text] as? [String : Int] ?? [:]
+        let personal = [loginTextField.text: passwordTextField.text] as? [String : String] ?? [:]
 
         if personal == person {
             present(RecipesVC, animated: true)
@@ -119,6 +124,12 @@ extension HomeViewController {
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
 
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
