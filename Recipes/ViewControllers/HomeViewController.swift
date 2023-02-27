@@ -85,8 +85,7 @@ class HomeViewController: UIViewController {
             passwordTextField.text = ""
             print(personal)
         } else {
-            presentSimpleAlert(title: "Oops", message: "Пользователь не найден")
-            passwordTextField.text = ""
+            presentSimpleAlert(title: "Oops", message: "Пользователь не найден", textField: passwordTextField)
         }
     }
 }
