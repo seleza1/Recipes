@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Oops, такой пользователь уже существует"
         label.textColor = .red
-        label.font = UIFont(name: label.font.fontName, size: 12)
+        label.font = label.font.withSize(12)
         label.numberOfLines = 0
         label.textAlignment = .center
 
@@ -68,8 +68,8 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Вы зарегистрировались!"
-        label.textColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
-        label.font = UIFont(name: label.font.fontName, size: 12)
+        label.textColor = .black
+        label.font = label.font.withSize(20)
         label.numberOfLines = 0
         label.textAlignment = .center
 
@@ -92,16 +92,14 @@ class HomeViewController: UIViewController {
     @objc func registerUser() {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
-        if personal == person {
-            failureLabel.isHidden = false
-        }
-
         if passwordTextField.text == "" {
             presentSimpleAlert(title: "Oops", message: "Введите необходимые поля")
+
+        } else if personal == person {
+            failureLabel.isHidden = false
         } else {
             let person = [loginTextField.text: passwordTextField.text]
             userDefaults.set(person, forKey: "password")
-
             succesLabel.isHidden = false
         }
     }
@@ -137,7 +135,7 @@ extension HomeViewController {
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 250),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 64),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
 
