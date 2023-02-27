@@ -60,34 +60,10 @@
 			children = (
 				CEA530BD29AC813C001E1522 /* Extension */,
 				CE5A349B2997863000164496 /* Applications */,
-				CE5A349A2997862900164496 /* Model */,
 				CE5A349D299786A500164496 /* ViewControllers */,
-				CE5A34982997860C00164496 /* StorageManager */,
-				CE5A34992997861B00164496 /* NetworkService */,
 				CE5A349C2997865E00164496 /* Resources */,
 			);
 			path = Recipes;
-			sourceTree = "<group>";
-		};
-		CE5A34982997860C00164496 /* StorageManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StorageManager;
-			sourceTree = "<group>";
-		};
-		CE5A34992997861B00164496 /* NetworkService */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetworkService;
-			sourceTree = "<group>";
-		};
-		CE5A349A2997862900164496 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		CE5A349B2997863000164496 /* Applications */ = {
