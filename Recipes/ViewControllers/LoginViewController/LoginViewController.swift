@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     private let recipesVC = MainTabBarController()
     private var person: [String: String] = [:]
+    private let router: MainRouter = Router.shared
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -100,8 +101,9 @@ class LoginViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
-            recipesVC.modalPresentationStyle = .fullScreen
-            present(recipesVC, animated: true, completion: nil)
+//            recipesVC.modalPresentationStyle = .fullScreen
+//            present(recipesVC, animated: true, completion: nil)
+            router.showMain(from: self)
             
             failureLabel.isHidden = true
             loginTextField.text = ""

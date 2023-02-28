@@ -20,6 +20,8 @@
 		CEA530CB29ACE5EB001E1522 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */; };
 		CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CC29ACF126001E1522 /* DetailsViewController.swift */; };
 		CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */; };
+		CED4E1CC29ADD6D6009DF970 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CB29ADD6D6009DF970 /* Router.swift */; };
+		CED4E1CE29ADD737009DF970 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CD29ADD737009DF970 /* MainRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
 		CEA530CC29ACF126001E1522 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		CED4E1CB29ADD6D6009DF970 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CED4E1CD29ADD737009DF970 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		CE5A34832997853D00164496 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				CED4E1CA29ADD6C3009DF970 /* Router */,
 				CE5A349B2997863000164496 /* Applications */,
 				CEA530C229ACDE46001E1522 /* NetworkManager */,
 				CEA530C129ACDE3F001E1522 /* Models */,
@@ -168,6 +173,15 @@
 			path = DetailsViewController;
 			sourceTree = "<group>";
 		};
+		CED4E1CA29ADD6C3009DF970 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CED4E1CB29ADD6D6009DF970 /* Router.swift */,
+				CED4E1CD29ADD737009DF970 /* MainRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,6 +256,8 @@
 				CEA530C429ACDF27001E1522 /* NetworkManager.swift in Sources */,
 				CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */,
 				CEA530C629ACDF33001E1522 /* Recipes.swift in Sources */,
+				CED4E1CC29ADD6D6009DF970 /* Router.swift in Sources */,
+				CED4E1CE29ADD737009DF970 /* MainRouter.swift in Sources */,
 				CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */,
 				CE5A34892997853D00164496 /* LoginViewController.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
