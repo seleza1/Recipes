@@ -13,7 +13,7 @@ final class ListOfRecipesViewController: UIViewController {
     private let router: ListRouter = Router.shared
     private let searchController = UISearchController()
     private var searchBarText: String = ""
-    
+
     private var nameRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
 
@@ -32,26 +32,26 @@ final class ListOfRecipesViewController: UIViewController {
         updateUi()
         setupSearchController()
 
-        networkManager.getRandomRecipes(url: Link.url) { [weak self]result in
-            switch result {
-
-            case .success(let recipes):
-                self?.nameRecipes = recipes
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        networkManager.getRandomRecipes(url: Link.url) { [weak self]result in
+//            switch result {
+//
+//            case .success(let recipes):
+//                self?.nameRecipes = recipes
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
 
 extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        nameRecipes.count
+        5
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = nameRecipes[indexPath.row].title
+        cell.textLabel?.text = "sffv"
         return cell
     }
 
