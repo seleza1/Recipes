@@ -10,6 +10,7 @@ import UIKit
 class ListOfRecipesViewController: UIViewController {
 
     private let identifier = "cell"
+    private let detailsViewController = DetailsViewController()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -41,10 +42,9 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(DetailsViewController(), animated: true)
+        detailsViewController.modalPresentationStyle = .fullScreen
+        present(detailsViewController, animated: true, completion: nil)
     }
-
-
 }
 
 extension ListOfRecipesViewController {
