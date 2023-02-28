@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
     private var person: [String: String] = [:]

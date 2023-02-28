@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListOfRecipesViewController: UIViewController {
+final class ListOfRecipesViewController: UIViewController {
 
     private let identifier = "cell"
     private let router: ListRouter = Router.shared

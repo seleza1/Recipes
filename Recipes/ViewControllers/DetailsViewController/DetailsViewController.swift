@@ -7,11 +7,10 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "detali"
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkManager {
+final class NetworkManager {
     static func getRecipes(url: String, completion: @escaping () ->()) {
         
     }

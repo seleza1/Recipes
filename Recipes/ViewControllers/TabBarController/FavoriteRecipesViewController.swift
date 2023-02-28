@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteRecipesViewController: UIViewController {
+final class FavoriteRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

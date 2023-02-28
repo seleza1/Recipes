@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Router {
+final class Router {
     static let shared = Router()
 
     private init() {}
