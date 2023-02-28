@@ -21,7 +21,7 @@ class ListOfRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addView()
+        setupViews()
         updateTableView()
         setConstraints()
         updateUi()
@@ -68,7 +68,7 @@ extension ListOfRecipesViewController {
         title = "Список рецептов"
     }
 
-    private func addView() {
-        view.addSubview(tableView)
+    private func setupViews() {
+        view.addView(tableView)
     }
 }

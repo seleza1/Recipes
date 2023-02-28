@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .white
         textField.placeholder = "Телефон или почта"
         textField.borderStyle = .roundedRect
@@ -24,7 +23,6 @@ class LoginViewController: UIViewController {
 
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .white
         textField.placeholder = "Пароль"
         textField.borderStyle = .roundedRect
@@ -34,7 +32,6 @@ class LoginViewController: UIViewController {
 
     private let loginButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.8817924857, green: 0.8861443996, blue: 0.9078727365, alpha: 1)
         button.layer.cornerRadius = 15
@@ -45,7 +42,6 @@ class LoginViewController: UIViewController {
 
     private let registerButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Зарегистрироваться", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.2860158086, green: 0.6941199899, blue: 0.3407269716, alpha: 1)
         button.layer.cornerRadius = 15
@@ -54,7 +50,6 @@ class LoginViewController: UIViewController {
 
     private let failureLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Oops, такой пользователь уже существует"
         label.textColor = .red
         label.font = label.font.withSize(12)
@@ -66,7 +61,6 @@ class LoginViewController: UIViewController {
 
     private let succesLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Вы зарегистрировались!"
         label.textColor = .black
         label.font = label.font.withSize(20)
@@ -79,7 +73,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addView()
+        setupViews()
         updateUi()
         setConstraints()
         setupKeyboard()
@@ -151,13 +145,13 @@ extension LoginViewController {
         ])
     }
 
-    private func addView() {
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
-        view.addSubview(loginTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(failureLabel)
-        view.addSubview(succesLabel)
+    private func setupViews() {
+        view.addView(loginButton)
+        view.addView(registerButton)
+        view.addView(loginTextField)
+        view.addView(passwordTextField)
+        view.addView(failureLabel)
+        view.addView(succesLabel)
     }
 
     private func dataRecovery() {

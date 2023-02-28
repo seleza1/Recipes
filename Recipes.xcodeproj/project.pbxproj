@@ -19,6 +19,7 @@
 		CEA530C829ACE571001E1522 /* ListOfRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530C729ACE571001E1522 /* ListOfRecipesViewController.swift */; };
 		CEA530CB29ACE5EB001E1522 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */; };
 		CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CC29ACF126001E1522 /* DetailsViewController.swift */; };
+		CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CEA530C729ACE571001E1522 /* ListOfRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRecipesViewController.swift; sourceTree = "<group>"; };
 		CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
 		CEA530CC29ACF126001E1522 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA530BF29AC8171001E1522 /* UiViewController + Extension.swift */,
+				CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */,
 			);
 			path = UiKit;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				CEA530C429ACDF27001E1522 /* NetworkManager.swift in Sources */,
 				CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */,
 				CEA530C629ACDF33001E1522 /* Recipes.swift in Sources */,
+				CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */,
 				CE5A34892997853D00164496 /* LoginViewController.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
 				CEA530C829ACE571001E1522 /* ListOfRecipesViewController.swift in Sources */,
