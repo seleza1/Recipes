@@ -72,13 +72,14 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
         updateUi()
         addTarget()
         setConstraints()
         setupKeyboard()
         dataRecovery()
+
+        NetworkManager.getRandomRecipes()
     }
 
     @objc func registerUser() {

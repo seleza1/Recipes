@@ -13,7 +13,6 @@ final class ListOfRecipesViewController: UIViewController {
     private let router: ListRouter = Router.shared
     private let searchController = UISearchController()
     private var searchBarText: String = ""
-    let array = ["123", "rf", "fwe"]
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -35,12 +34,12 @@ final class ListOfRecipesViewController: UIViewController {
 
 extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        array.count
+        10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = array[indexPath.row]
+        cell.textLabel?.text = "dfss"
         return cell
     }
 
@@ -81,8 +80,6 @@ extension ListOfRecipesViewController {
     private func setupViews() {
         view.addView(tableView)
     }
-
-
 }
 
 extension ListOfRecipesViewController: UISearchBarDelegate {
