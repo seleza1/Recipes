@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Recipes: Decodable {
+struct Recipes: Codable {
     let title: String
+    
 }

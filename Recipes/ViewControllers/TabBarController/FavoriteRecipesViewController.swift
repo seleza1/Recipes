@@ -11,8 +11,6 @@ final class FavoriteRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Любимые рецепты"
 
     }
 }
