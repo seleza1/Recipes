@@ -75,9 +75,9 @@ class LoginViewController: UIViewController {
 
         setupViews()
         updateUi()
+        addTarget()
         setConstraints()
         setupKeyboard()
-        addTarget()
         dataRecovery()
     }
 
