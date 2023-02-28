@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol MainRouter {
+protocol LoginRouter {
     func showMain(from viewController: UIViewController)
 }
 
-extension Router: MainRouter {
+extension Router: LoginRouter {
     func showMain(from viewController: UIViewController) {
         let recipesVC = MainTabBarController()
         recipesVC.modalPresentationStyle = .fullScreen
         viewController.present(recipesVC, animated: true, completion: nil)
     }
-
-
 }

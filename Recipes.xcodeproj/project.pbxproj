@@ -21,7 +21,8 @@
 		CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CC29ACF126001E1522 /* DetailsViewController.swift */; };
 		CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */; };
 		CED4E1CC29ADD6D6009DF970 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CB29ADD6D6009DF970 /* Router.swift */; };
-		CED4E1CE29ADD737009DF970 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CD29ADD737009DF970 /* MainRouter.swift */; };
+		CED4E1CE29ADD737009DF970 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CD29ADD737009DF970 /* LoginRouter.swift */; };
+		CED4E1D029ADDB84009DF970 /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CF29ADDB84009DF970 /* ListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +42,8 @@
 		CEA530CC29ACF126001E1522 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		CED4E1CB29ADD6D6009DF970 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		CED4E1CD29ADD737009DF970 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		CED4E1CD29ADD737009DF970 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		CED4E1CF29ADDB84009DF970 /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				CED4E1CB29ADD6D6009DF970 /* Router.swift */,
-				CED4E1CD29ADD737009DF970 /* MainRouter.swift */,
+				CED4E1CD29ADD737009DF970 /* LoginRouter.swift */,
+				CED4E1CF29ADDB84009DF970 /* ListRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -257,9 +260,10 @@
 				CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */,
 				CEA530C629ACDF33001E1522 /* Recipes.swift in Sources */,
 				CED4E1CC29ADD6D6009DF970 /* Router.swift in Sources */,
-				CED4E1CE29ADD737009DF970 /* MainRouter.swift in Sources */,
+				CED4E1CE29ADD737009DF970 /* LoginRouter.swift in Sources */,
 				CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */,
 				CE5A34892997853D00164496 /* LoginViewController.swift in Sources */,
+				CED4E1D029ADDB84009DF970 /* ListRouter.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
 				CEA530C829ACE571001E1522 /* ListOfRecipesViewController.swift in Sources */,
 				CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */,
