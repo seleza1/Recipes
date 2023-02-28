@@ -31,7 +31,6 @@ final class MainTabBarController: UITabBarController {
     private func createNavController(viewController: UIViewController, itemName: String, itemImage: String) -> UINavigationController {
         let item = UITabBarItem(title: itemName, image: UIImage(systemName: itemImage), tag: 0)
 
-
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem = item
 

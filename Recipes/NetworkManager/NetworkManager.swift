@@ -12,7 +12,7 @@ import Foundation
      func getRandomRecipes(url: String, completion: @escaping(Result<Recipes, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription)
                 return

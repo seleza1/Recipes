@@ -35,7 +35,7 @@ final class LoginViewController: UIViewController {
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.8817924857, green: 0.8861443996, blue: 0.9078727365, alpha: 1)
         button.layer.cornerRadius = 15
-        button.setTitleColor(.black , for: .normal)
+        button.setTitleColor(.black, for: .normal)
 
         return button
     }()
@@ -100,7 +100,7 @@ final class LoginViewController: UIViewController {
 
         if personal == person {
             router.showMain(from: self)
-            
+
             failureLabel.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
@@ -158,7 +158,8 @@ extension LoginViewController {
     }
 
     private func setupKeyboard() {
-        //passwordTextField.keyboardType = .asciiCapableNumberPad
+        // passwordTextField.keyboardType = .asciiCapableNumberPad
+
         passwordTextField.isSecureTextEntry = true
 
     }
@@ -180,4 +181,3 @@ extension LoginViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
 }
-
