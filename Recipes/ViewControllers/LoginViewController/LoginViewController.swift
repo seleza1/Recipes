@@ -78,8 +78,9 @@ final class LoginViewController: UIViewController {
         setConstraints()
         setupKeyboard()
         dataRecovery()
-
-        NetworkManager.getRandomRecipes()
+        NetworkManager.getRandomRecipes(url: Link.url) { result in
+            print(result)
+        }
     }
 
     @objc func registerUser() {

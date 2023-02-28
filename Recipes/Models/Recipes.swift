@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Recipes: Decodable {
+    let title: String
+}
