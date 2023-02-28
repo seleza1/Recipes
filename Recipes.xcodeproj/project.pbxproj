@@ -219,8 +219,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE5A34952997854300164496 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
-				CED4E1D329AEB301009DF970 /* ShellScript */,
 				852DD9CE1039F1D15B818721 /* [CP] Check Pods Manifest.lock */,
+				CED4E1D329AEB301009DF970 /* ShellScript */,
 				CE5A347D2997853D00164496 /* Sources */,
 				CE5A347E2997853D00164496 /* Frameworks */,
 				CE5A347F2997853D00164496 /* Resources */,
