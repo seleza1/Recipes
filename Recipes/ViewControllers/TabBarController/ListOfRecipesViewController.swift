@@ -11,6 +11,9 @@ final class ListOfRecipesViewController: UIViewController {
 
     private let identifier = "cell"
     private let router: ListRouter = Router.shared
+    private let searchController = UISearchController()
+    private var searchBarText: String = ""
+    let array = ["123", "rf", "fwe"]
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -25,19 +28,19 @@ final class ListOfRecipesViewController: UIViewController {
         updateTableView()
         setConstraints()
         updateUi()
+        setupSearchController()
 
     }
-
 }
 
 extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        100
+        array.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = "zzz"
+        cell.textLabel?.text = array[indexPath.row]
         return cell
     }
 
@@ -62,6 +65,14 @@ extension ListOfRecipesViewController {
         tableView.dataSource = self
     }
 
+    private func setupSearchController() {
+        navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "Кого ищем?"
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+
+    }
+
     private func updateUi() {
         view.backgroundColor = .white
         title = "Список рецептов"
@@ -69,5 +80,13 @@ extension ListOfRecipesViewController {
 
     private func setupViews() {
         view.addView(tableView)
+    }
+
+
+}
+
+extension ListOfRecipesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }

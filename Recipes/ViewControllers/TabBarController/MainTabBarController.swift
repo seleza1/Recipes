@@ -11,12 +11,16 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        navigationItem.hidesBackButton = true
+        updateUi()
         setupTabBar()
     }
 
-    func setupTabBar() {
+    private func updateUi() {
+        view.backgroundColor = .white
+        navigationItem.hidesBackButton = true
+    }
+
+    private func setupTabBar() {
         let listOfRecipesViewController = createNavController(viewController: ListOfRecipesViewController(), itemName: "Рецепты", itemImage: "list.bullet")
         let favoriteRecipesViewController = createNavController(viewController: FavoriteRecipesViewController(), itemName: "Любимые рецепты", itemImage: "brain")
 
@@ -24,7 +28,7 @@ final class MainTabBarController: UITabBarController {
 
     }
 
-    func createNavController(viewController: UIViewController, itemName: String, itemImage: String) -> UINavigationController {
+    private func createNavController(viewController: UIViewController, itemName: String, itemImage: String) -> UINavigationController {
         let item = UITabBarItem(title: itemName, image: UIImage(systemName: itemImage), tag: 0)
 
 
