@@ -6,6 +6,5 @@ target 'Recipes' do
   use_frameworks!
 
   # Pods for Recipes
-pod 'SwiftLint'
 
 end
