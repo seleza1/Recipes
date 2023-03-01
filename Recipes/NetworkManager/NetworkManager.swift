@@ -7,7 +7,7 @@
 
 import Foundation
 
- class NetworkManager {
+ final class NetworkManager {
 
      func getRandomRecipes(url: String, completion: @escaping(Result<Recipes, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
@@ -23,7 +23,7 @@ import Foundation
             do {
                 let json = try JSONDecoder().decode([Recipe].self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(json))
+                    print(json)
                 }
             } catch let error {
                 print(error)

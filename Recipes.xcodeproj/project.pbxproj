@@ -208,7 +208,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE5A34952997854300164496 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
-				CE4F7DCD29AF3BEE0057741D /* ShellScript */,
 				CE5A347D2997853D00164496 /* Sources */,
 				CE5A347E2997853D00164496 /* Frameworks */,
 				CE5A347F2997853D00164496 /* Resources */,
@@ -267,28 +266,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CE4F7DCD29AF3BEE0057741D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE5A347D2997853D00164496 /* Sources */ = {
