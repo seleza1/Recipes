@@ -1,5 +1,0 @@
-line_length:
-- 2 # warning
-- 3 # error
-disabled_rules:
-- trailing_whitespace
