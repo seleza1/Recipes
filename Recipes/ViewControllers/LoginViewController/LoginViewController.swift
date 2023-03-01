@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     private var person: [String: String] = [:]
     private let router: LoginRouter = Router.shared
     let networkManager = NetworkManager()
-
+    
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
