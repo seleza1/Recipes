@@ -7,7 +7,12 @@
 
 import Foundation
 
+struct Recipe: Decodable {
+    let recipes: [Recipes]
+}
+
+// MARK: - Recipe
 struct Recipes: Decodable {
     let title: String
-    
+    let image: String
 }

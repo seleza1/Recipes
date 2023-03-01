@@ -12,6 +12,7 @@ final class LoginViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     private var person: [String: String] = [:]
     private let router: LoginRouter = Router.shared
+    let networkManager = NetworkManager()
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
@@ -78,6 +79,9 @@ final class LoginViewController: UIViewController {
         setConstraints()
         setupKeyboard()
         dataRecovery()
+        networkManager.getRandomRecipes(url: Link.url) { result in
+            print(result)
+        }
     }
 
     @objc func registerUser() {

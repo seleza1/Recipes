@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9055BA07BE5F199162869234 /* Pods_Recipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCD445B6BD0C8806356D251 /* Pods_Recipes.framework */; };
+		CE4F7DCF29AF48840057741D /* Pods_Recipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4F7DCE29AF48840057741D /* Pods_Recipes.framework */; };
+		CE4F7DD029AF48840057741D /* Pods_Recipes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE4F7DCE29AF48840057741D /* Pods_Recipes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE5A34852997853D00164496 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A34842997853D00164496 /* AppDelegate.swift */; };
 		CE5A34872997853D00164496 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A34862997853D00164496 /* SceneDelegate.swift */; };
 		CE5A34892997853D00164496 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A34882997853D00164496 /* LoginViewController.swift */; };
@@ -27,10 +29,25 @@
 		CED4E1D229AE1188009DF970 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1D129AE1188009DF970 /* Link.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CE4F7DD129AF48840057741D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE4F7DD029AF48840057741D /* Pods_Recipes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		35234FBA1555FB8ED62B0B3C /* Pods-Recipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes.debug.xcconfig"; path = "Target Support Files/Pods-Recipes/Pods-Recipes.debug.xcconfig"; sourceTree = "<group>"; };
 		9CCD445B6BD0C8806356D251 /* Pods_Recipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20A15A875E1930843CE0AF9 /* Pods-Recipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipes.release.xcconfig"; path = "Target Support Files/Pods-Recipes/Pods-Recipes.release.xcconfig"; sourceTree = "<group>"; };
+		CE4F7DCE29AF48840057741D /* Pods_Recipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Recipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5A34812997853D00164496 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5A34842997853D00164496 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5A34862997853D00164496 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4F7DCF29AF48840057741D /* Pods_Recipes.framework in Frameworks */,
 				9055BA07BE5F199162869234 /* Pods_Recipes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +85,7 @@
 		4635B8B3F83274F9CF1BF4B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE4F7DCE29AF48840057741D /* Pods_Recipes.framework */,
 				9CCD445B6BD0C8806356D251 /* Pods_Recipes.framework */,
 			);
 			name = Frameworks;
@@ -219,11 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE5A34952997854300164496 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
-				CE4F7DCD29AF3BEE0057741D /* ShellScript */,
 				ECA6E70AD1DCB7DC019D380A /* [CP] Check Pods Manifest.lock */,
+				CE4F7DCD29AF3BEE0057741D /* ShellScript */,
 				CE5A347D2997853D00164496 /* Sources */,
 				CE5A347E2997853D00164496 /* Frameworks */,
 				CE5A347F2997853D00164496 /* Resources */,
+				CE4F7DD129AF48840057741D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
