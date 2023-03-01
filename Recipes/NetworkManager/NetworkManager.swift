@@ -7,9 +7,9 @@
 
 import Foundation
 
- final class NetworkManager {
+final class NetworkManager {
 
-     func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], Error>) -> Void) {
+    func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], Error>) -> Void) {
         guard let url = URL(string: url) else { return }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
