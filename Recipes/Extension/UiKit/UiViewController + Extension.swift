@@ -16,7 +16,7 @@ extension UIViewController {
             textField?.text = ""
 
         }
-                alertController.addAction(okAction)
-                present(alertController, animated: true)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
 }

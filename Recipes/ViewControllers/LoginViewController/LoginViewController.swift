@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     private var person: [String: String] = [:]
     private let router: LoginRouter = Router.shared
     let networkManager = NetworkManager()
-    
+
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -79,9 +79,7 @@ final class LoginViewController: UIViewController {
         setConstraints()
         setupKeyboard()
         dataRecovery()
-        networkManager.getRandomRecipes(url: Link.url) { result in
-            print(result)
-        }
+
     }
 
     @objc func registerUser() {
@@ -163,7 +161,6 @@ extension LoginViewController {
 
     private func setupKeyboard() {
         // passwordTextField.keyboardType = .asciiCapableNumberPad
-
         passwordTextField.isSecureTextEntry = true
 
     }

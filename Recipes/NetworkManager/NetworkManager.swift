@@ -9,7 +9,7 @@ import Foundation
 
  final class NetworkManager {
 
-     func getRandomRecipes(url: String, completion: @escaping(Result<Recipes, Error>) -> Void) {
+     func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], Error>) -> Void) {
         guard let url = URL(string: url) else { return }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -18,12 +18,12 @@ import Foundation
                 return
             }
 
-            String(data: data, encoding: .utf8).map { print($0) }
+            // String(data: data, encoding: .utf8).map { print($0) }
 
             do {
-                let json = try JSONDecoder().decode([Recipe].self, from: data)
+                let json = try JSONDecoder().decode(Recipe.self, from: data)
                 DispatchQueue.main.async {
-                    print(json)
+                    completion(.success(json.recipes))
                 }
             } catch let error {
                 print(error)
