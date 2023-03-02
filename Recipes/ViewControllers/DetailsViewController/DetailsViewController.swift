@@ -16,6 +16,8 @@ final class DetailsViewController: UIViewController {
 
     }()
 
+     var randomRecipes: [Recipes] = []
+
      let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0

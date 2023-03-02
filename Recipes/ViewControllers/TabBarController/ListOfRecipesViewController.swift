@@ -34,8 +34,8 @@ final class ListOfRecipesViewController: UIViewController {
         setupSearchController()
 
         networkManager.getRandomRecipes(url: Link.url) { [weak self] result in
-
             switch result {
+
             case .success(let recipes):
                 self?.randomRecipes = recipes
                 DispatchQueue.main.async {
@@ -58,7 +58,6 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         let indexPath = randomRecipes[indexPath.row]
         cell.textLabel?.text = indexPath.title
         cell.configure(with: indexPath)
-
         return cell
     }
 
@@ -118,13 +117,10 @@ extension UITableViewCell {
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: url) {
                 content.image = UIImage(data: data)
-            }
-            DispatchQueue.main.async {
-                self.contentConfiguration = content
-
+                DispatchQueue.main.async {
+                    self.contentConfiguration = content
+                }
             }
         }
-
     }
-
 }

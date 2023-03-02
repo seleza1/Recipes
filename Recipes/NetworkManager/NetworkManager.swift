@@ -26,7 +26,7 @@ final class NetworkManager {
                     completion(.success(json.recipes))
                 }
             } catch let error {
-                print(error)
+                completion(.failure(error))
             }
         }.resume()
     }

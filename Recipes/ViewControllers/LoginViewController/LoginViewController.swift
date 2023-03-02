@@ -106,7 +106,6 @@ final class LoginViewController: UIViewController {
             failureLabel.isHidden = true
             loginTextField.text = ""
             passwordTextField.text = ""
-            print(personal)
         } else {
             presentSimpleAlert(title: "Oops", message: "Пользователь не найден", textField: passwordTextField)
         }
