@@ -9,13 +9,13 @@ import UIKit
 
 final class DetailsViewController: UIViewController {
 
-     let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
 
     }()
-
-     let nameRecipesLabel: UILabel = {
+    
+    let nameRecipesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пероженое"
@@ -26,23 +26,20 @@ final class DetailsViewController: UIViewController {
     }()
 
     let instructionLabel: UILabel = {
-       let label = UILabel()
-       label.numberOfLines = 0
-       label.font = label.font.withSize(12)
-       label.textAlignment = .center
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = label.font.withSize(12)
+        label.textAlignment = .center
 
-       return label
-   }()
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        view.addView(imageView)
-        view.addView(nameRecipesLabel)
-        view.addView(instructionLabel)
+        
+        addViews()
         setConstraints()
-
     }
 }
 
@@ -63,5 +60,11 @@ extension DetailsViewController {
             instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
+    }
+
+    private func addViews() {
+        view.addView(imageView)
+        view.addView(nameRecipesLabel)
+        view.addView(instructionLabel)
     }
 }

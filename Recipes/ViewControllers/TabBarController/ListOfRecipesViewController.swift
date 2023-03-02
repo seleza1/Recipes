@@ -8,14 +8,24 @@
 import UIKit
 
 final class ListOfRecipesViewController: UIViewController {
-
+    
     private let identifier = "cell"
     private let router: ListRouter = Router.shared
     private let searchController = UISearchController()
     private var searchBarText: String = ""
-
+    
     private var randomRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
+    
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = label.font.withSize(20)
+        label.text = "Error"
+        label.textAlignment = .center
+        
+        return label
+    }()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -26,7 +36,7 @@ final class ListOfRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
+        addViews()
         updateTableView()
         setConstraints()
         updateUi()
@@ -59,7 +69,7 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let indexPath = randomRecipes[indexPath.row]
-        cell.configure(with: indexPath)
+        cell.configure(recipe: indexPath)
         return cell
     }
 
@@ -100,7 +110,7 @@ extension ListOfRecipesViewController {
         title = "Список рецептов"
     }
 
-    private func setupViews() {
+    private func addViews() {
         view.addView(tableView)
     }
 }
@@ -112,7 +122,7 @@ extension ListOfRecipesViewController: UISearchBarDelegate {
 }
 
 extension UITableViewCell {
-    func configure(with recipe: Recipes) {
+    func configure(recipe: Recipes) {
         var content = defaultContentConfiguration()
         content.text = recipe.title
         guard let url = URL(string: recipe.image) else { return }

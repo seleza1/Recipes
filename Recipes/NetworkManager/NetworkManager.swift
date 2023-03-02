@@ -33,6 +33,7 @@ final class NetworkManager: UIViewController {
                 }
             } catch {
                 completion(.failure(.decodingError))
+                
             }
         }.resume()
     }

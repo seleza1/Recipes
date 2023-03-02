@@ -17,7 +17,7 @@ extension Router: ListRouter {
         let detailsViewController = DetailsViewController()
         detailsViewController.nameRecipesLabel.text = recipe
         detailsViewController.instructionLabel.text = instruction
-        detailsViewController.imageView.image = UIImage(named: "food")
+        detailsViewController.imageView.image = UIImage(named: image)
         detailsViewController.modalPresentationStyle = .pageSheet
         viewController.present(detailsViewController, animated: true, completion: nil)
     }
