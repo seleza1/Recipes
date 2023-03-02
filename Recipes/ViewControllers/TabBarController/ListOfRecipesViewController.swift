@@ -62,9 +62,11 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPathTitle = randomRecipes[indexPath.row].title
-        detailsVC.label.text = indexPathTitle
-        router.showDetails(from: self)
+        let indexPath = randomRecipes[indexPath.row]
+        detailsVC.label.text = indexPath.title
+        detailsVC.imageView.image = UIImage(systemName: indexPath.image)
+        present(detailsVC, animated: true)
+        // router.showDetails(from: self)
     }
 }
 
@@ -110,10 +112,10 @@ extension ListOfRecipesViewController: UISearchBarDelegate {
 }
 
 extension UITableViewCell {
-    func configure(with track: Recipes) {
+    func configure(with recipe: Recipes) {
         var content = defaultContentConfiguration()
-        content.text = track.title
-        guard let url = URL(string: track.image) else { return }
+        content.text = recipe.title
+        guard let url = URL(string: recipe.image) else { return }
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: url) {
                 content.image = UIImage(data: data)
