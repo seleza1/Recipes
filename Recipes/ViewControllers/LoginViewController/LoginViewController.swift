@@ -87,7 +87,6 @@ final class LoginViewController: UIViewController {
 
         if passwordTextField.text == "" {
             presentSimpleAlert(title: "Oops", message: "Enter required fields")
-
         } else if personal == person {
             failureLabel.isHidden = false
         } else {

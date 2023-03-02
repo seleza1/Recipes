@@ -24,6 +24,14 @@ final class ListOfRecipesViewController: UIViewController {
         return tableView
     }()
 
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView()
+        activity.hidesWhenStopped = true
+        activity.style = .large
+        return activity
+
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addViews()
@@ -32,6 +40,7 @@ final class ListOfRecipesViewController: UIViewController {
         updateUi()
         setupSearchController()
         getRandomRecipes()
+        activityIndicator.startAnimating()
 
     }
 
@@ -41,12 +50,14 @@ final class ListOfRecipesViewController: UIViewController {
 
             case .success(let recipes):
                 self?.randomRecipes = recipes
+                self?.activityIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
             case .failure( _):
                 DispatchQueue.main.async {
                     self?.presentSimpleAlert(title: "Error", message: "problems with connection")
+                    self?.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -78,7 +89,11 @@ extension ListOfRecipesViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 
@@ -104,6 +119,7 @@ extension ListOfRecipesViewController {
 
     private func addViews() {
         view.addView(tableView)
+        view.addView(activityIndicator)
     }
 }
 
