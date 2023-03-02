@@ -112,7 +112,15 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let indexPath = randomRecipes[indexPath.row]
         cell.configure(recipe: indexPath)
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            randomRecipes.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -157,7 +165,8 @@ extension ListOfRecipesViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.rowHeight = 125
+
     }
 
     private func setupSearchController() {
