@@ -17,7 +17,7 @@ final class LoginViewController: UIViewController {
     private let loginTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
-        textField.placeholder = "Телефон или почта"
+        textField.placeholder = "Number or email"
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
-        textField.placeholder = "Пароль"
+        textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
 
         return textField
@@ -33,7 +33,7 @@ final class LoginViewController: UIViewController {
 
     private let loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Войти", for: .normal)
+        button.setTitle("Log in", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.8817924857, green: 0.8861443996, blue: 0.9078727365, alpha: 1)
         button.layer.cornerRadius = 15
         button.setTitleColor(.black, for: .normal)
@@ -43,7 +43,7 @@ final class LoginViewController: UIViewController {
 
     private let registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.2860158086, green: 0.6941199899, blue: 0.3407269716, alpha: 1)
         button.layer.cornerRadius = 15
         return button
@@ -51,7 +51,7 @@ final class LoginViewController: UIViewController {
 
     private let failureLabel: UILabel = {
         let label = UILabel()
-        label.text = "Oops, такой пользователь уже существует"
+        label.text = "This user already exists"
         label.textColor = .red
         label.font = label.font.withSize(12)
         label.numberOfLines = 0
@@ -62,7 +62,7 @@ final class LoginViewController: UIViewController {
 
     private let succesLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вы зарегистрировались!"
+        label.text = "You signed up!"
         label.textColor = .black
         label.font = label.font.withSize(20)
         label.numberOfLines = 0
@@ -86,7 +86,7 @@ final class LoginViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if passwordTextField.text == "" {
-            presentSimpleAlert(title: "Oops", message: "Введите необходимые поля")
+            presentSimpleAlert(title: "Oops", message: "Enter required fields")
 
         } else if personal == person {
             failureLabel.isHidden = false
@@ -107,7 +107,7 @@ final class LoginViewController: UIViewController {
             loginTextField.text = ""
             passwordTextField.text = ""
         } else {
-            presentSimpleAlert(title: "Oops", message: "Пользователь не найден", textField: passwordTextField)
+            presentSimpleAlert(title: "Error", message: "User unknow", textField: passwordTextField)
         }
     }
 }

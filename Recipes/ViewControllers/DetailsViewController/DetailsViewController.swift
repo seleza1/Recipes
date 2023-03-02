@@ -18,7 +18,6 @@ final class DetailsViewController: UIViewController {
     let nameRecipesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Пероженое"
         label.font = label.font.withSize(20)
         label.textAlignment = .center
 

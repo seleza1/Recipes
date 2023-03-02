@@ -46,8 +46,7 @@ final class ListOfRecipesViewController: UIViewController {
                 }
             case .failure( _):
                 DispatchQueue.main.async {
-                    self?.presentSimpleAlert(title: "Проблемы с соединением", message: "Проверьте соединение с интернетом")
-
+                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
                 }
             }
         }
@@ -92,7 +91,7 @@ extension ListOfRecipesViewController {
 
     private func setupSearchController() {
         navigationItem.searchController = searchController
-        searchController.searchBar.placeholder = "Кого ищем?"
+        searchController.searchBar.placeholder = "What recipe are you looking for?"
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
 
@@ -100,7 +99,7 @@ extension ListOfRecipesViewController {
 
     private func updateUi() {
         view.backgroundColor = .white
-        title = "Список рецептов"
+        title = "List of recipes"
     }
 
     private func addViews() {
