@@ -49,17 +49,17 @@ final class DetailsViewController: UIViewController {
 extension DetailsViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             imageView.heightAnchor.constraint(equalToConstant: 250),
 
-            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
-            nameRecipesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            nameRecipesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
 
-            instructionLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 32),
+            instructionLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
             instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])

@@ -5,16 +5,22 @@
 //  Created by user on 27.02.2023.
 //
 
-import Foundation
+import UIKit
 
-final class NetworkManager {
+enum NetworkError: Error {
+    case invalidURL
+    case noData
+    case decodingError
+}
 
-    func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], Error>) -> Void) {
+final class NetworkManager: UIViewController {
+
+    func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], NetworkError>) -> Void) {
         guard let url = URL(string: url) else { return }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print(error?.localizedDescription)
+                completion(.failure(.invalidURL))
                 return
             }
 
@@ -25,8 +31,8 @@ final class NetworkManager {
                 DispatchQueue.main.async {
                     completion(.success(json.recipes))
                 }
-            } catch let error {
-                completion(.failure(error))
+            } catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
     }

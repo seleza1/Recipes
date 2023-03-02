@@ -53,7 +53,7 @@ final class ListOfRecipesViewController: UIViewController {
 
 extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        randomRecipes.count
+        return randomRecipes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,11 +64,9 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPathTitle = randomRecipes[indexPath.row].title
-        let indexPathImage = randomRecipes[indexPath.row].image
-        let indexPathInstruction = randomRecipes[indexPath.row].instructions
+        let indexPath = randomRecipes[indexPath.row]
 
-        router.showDetails(from: self, with: indexPathTitle, with: indexPathInstruction, image: indexPathImage)
+        router.showDetails(from: self, recipe: indexPath.title, instruction: indexPath.instructions, image: indexPath.image)
     }
 }
 
