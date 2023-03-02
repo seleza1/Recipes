@@ -56,7 +56,7 @@ final class ListOfRecipesViewController: UIViewController {
                 }
             case .failure( _):
                 DispatchQueue.main.async {
-                    self?.errorLabel.isHidden = false
+                    self?.presentSimpleAlert(title: "Ошибка с соединением", message: "Попробуйте перезапустить приложение")
 
                 }
             }
