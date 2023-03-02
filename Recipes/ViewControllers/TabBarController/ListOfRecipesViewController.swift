@@ -32,6 +32,43 @@ final class ListOfRecipesViewController: UIViewController {
 
     }()
 
+    private let uiView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
+
+        return view
+    }()
+
+    private let connectionFiledLabel: UILabel = {
+        let label = UILabel()
+        // label.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
+        label.text = "Connection failed"
+        label.font = label.font.withSize(20)
+
+        label.textAlignment = .center
+        return label
+    }()
+
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        // label.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
+        label.text = "Your internet connection is offline. Please check your internet connection and try again"
+        label.font = label.font.withSize(14)
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        label.numberOfLines = 0
+
+        label.textAlignment = .center
+        return label
+    }()
+
+    private let retryButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Retry", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.01562912948, green: 0.5854102373, blue: 0.9989331365, alpha: 1)
+        button.layer.cornerRadius = 15
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addViews()
@@ -40,7 +77,7 @@ final class ListOfRecipesViewController: UIViewController {
         updateUi()
         setupSearchController()
         getRandomRecipes()
-        activityIndicator.startAnimating()
+
 
     }
 
@@ -56,8 +93,9 @@ final class ListOfRecipesViewController: UIViewController {
                 }
             case .failure( _):
                 DispatchQueue.main.async {
-                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
-                    self?.activityIndicator.stopAnimating()
+                    self?.uiView.isHidden = false
+//                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
+//                    self?.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -91,9 +129,22 @@ extension ListOfRecipesViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
+            uiView.topAnchor.constraint(equalTo: view.topAnchor, constant: 108),
+            uiView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            uiView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            uiView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+
             activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+
+            connectionFiledLabel.topAnchor.constraint(equalTo: uiView.topAnchor, constant: 125),
+            connectionFiledLabel.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 16),
+            connectionFiledLabel.trailingAnchor.constraint(equalTo: uiView.trailingAnchor, constant: -16),
+
+            errorLabel.topAnchor.constraint(equalTo: connectionFiledLabel.bottomAnchor, constant: 16),
+            errorLabel.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 16),
+            errorLabel.trailingAnchor.constraint(equalTo: uiView.trailingAnchor, constant: -16),
         ])
     }
 
@@ -115,11 +166,21 @@ extension ListOfRecipesViewController {
     private func updateUi() {
         view.backgroundColor = .white
         title = "List of recipes"
+        activityIndicator.startAnimating()
+        uiView.isHidden = true
+
+
     }
 
     private func addViews() {
         view.addView(tableView)
         view.addView(activityIndicator)
+        view.addView(uiView)
+        uiView.addView(connectionFiledLabel)
+        uiView.addView(errorLabel)
+        uiView.addView(retryButton)
+
+
     }
 }
 
