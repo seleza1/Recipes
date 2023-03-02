@@ -135,9 +135,8 @@ extension ListOfRecipesViewController {
             uiView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             uiView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
 
-            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
-            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             connectionFiledLabel.topAnchor.constraint(equalTo: uiView.topAnchor, constant: 200),
             connectionFiledLabel.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 16),
