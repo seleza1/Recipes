@@ -41,17 +41,14 @@ final class ListOfRecipesViewController: UIViewController {
 
     private let connectionFiledLabel: UILabel = {
         let label = UILabel()
-        // label.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
         label.text = "Connection failed"
         label.font = label.font.withSize(20)
-
         label.textAlignment = .center
         return label
     }()
 
     private let errorLabel: UILabel = {
         let label = UILabel()
-        // label.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
         label.text = "Your internet connection is offline. Please check your internet connection and try again"
         label.font = label.font.withSize(14)
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
@@ -78,8 +75,6 @@ final class ListOfRecipesViewController: UIViewController {
         setupSearchController()
         getRandomRecipes()
         retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
-
-
     }
 
     @objc func getAgain() {
