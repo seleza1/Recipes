@@ -140,7 +140,6 @@ extension LoginViewController {
             succesLabel.bottomAnchor.constraint(equalTo: loginTextField.topAnchor, constant: -8),
             succesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             succesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
-
         ])
     }
 
@@ -155,13 +154,11 @@ extension LoginViewController {
 
     private func dataRecovery() {
         person = userDefaults.object(forKey: "password") as? [String: String] ?? [:]
-
     }
 
     private func setupKeyboard() {
         // passwordTextField.keyboardType = .asciiCapableNumberPad
         passwordTextField.isSecureTextEntry = true
-
     }
 
     private func addTarget() {

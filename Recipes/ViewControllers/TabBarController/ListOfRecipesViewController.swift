@@ -16,22 +16,22 @@ final class ListOfRecipesViewController: UIViewController {
     
     private var randomRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
-    
-    let errorLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = label.font.withSize(20)
-        label.text = "Error"
-        label.textAlignment = .center
-        
-        return label
-    }()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         return tableView
+    }()
+
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "Error, попробуйте перезапустить приложение"
+        label.font = label.font.withSize(20)
+        label.textAlignment = .center
+
+        return label
     }()
 
     override func viewDidLoad() {
@@ -54,8 +54,11 @@ final class ListOfRecipesViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-            case .failure(let error):
-                print(error)
+            case .failure( _):
+                DispatchQueue.main.async {
+                    self?.errorLabel.isHidden = false
+
+                }
             }
         }
     }
@@ -86,7 +89,11 @@ extension ListOfRecipesViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            errorLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 
@@ -108,10 +115,12 @@ extension ListOfRecipesViewController {
     private func updateUi() {
         view.backgroundColor = .white
         title = "Список рецептов"
+        errorLabel.isHidden = true
     }
 
     private func addViews() {
         view.addView(tableView)
+        view.addView(errorLabel)
     }
 }
 

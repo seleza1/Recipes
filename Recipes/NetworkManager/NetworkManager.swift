@@ -13,19 +13,19 @@ enum NetworkError: Error {
     case decodingError
 }
 
-final class NetworkManager: UIViewController {
+final class NetworkManager {
 
     func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], NetworkError>) -> Void) {
         guard let url = URL(string: url) else { return }
-
+        
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
                 completion(.failure(.invalidURL))
                 return
             }
-
+            
             // String(data: data, encoding: .utf8).map { print($0) }
-
+            
             do {
                 let json = try JSONDecoder().decode(Recipe.self, from: data)
                 DispatchQueue.main.async {
@@ -33,8 +33,8 @@ final class NetworkManager: UIViewController {
                 }
             } catch {
                 completion(.failure(.decodingError))
-                
             }
         }.resume()
+        
     }
 }
