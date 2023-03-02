@@ -24,16 +24,6 @@ final class ListOfRecipesViewController: UIViewController {
         return tableView
     }()
 
-    private let errorLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = "Error, попробуйте перезапустить приложение"
-        label.font = label.font.withSize(20)
-        label.textAlignment = .center
-
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         addViews()
@@ -56,7 +46,7 @@ final class ListOfRecipesViewController: UIViewController {
                 }
             case .failure( _):
                 DispatchQueue.main.async {
-                    self?.presentSimpleAlert(title: "Ошибка с соединением", message: "Попробуйте перезапустить приложение")
+                    self?.presentSimpleAlert(title: "Проблемы с соединением", message: "Проверьте соединение с интернетом")
 
                 }
             }
@@ -89,11 +79,7 @@ extension ListOfRecipesViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            errorLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -115,12 +101,10 @@ extension ListOfRecipesViewController {
     private func updateUi() {
         view.backgroundColor = .white
         title = "Список рецептов"
-        errorLabel.isHidden = true
     }
 
     private func addViews() {
         view.addView(tableView)
-        view.addView(errorLabel)
     }
 }
 
