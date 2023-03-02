@@ -11,14 +11,11 @@ final class DetailsViewController: UIViewController {
 
      let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "food")
         return imageView
 
     }()
 
-     var randomRecipes: [Recipes] = []
-
-     let label: UILabel = {
+     let nameRecipesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Пероженое"
@@ -28,12 +25,22 @@ final class DetailsViewController: UIViewController {
         return label
     }()
 
+    let instructionLabel: UILabel = {
+       let label = UILabel()
+       label.numberOfLines = 0
+       label.font = label.font.withSize(12)
+       label.textAlignment = .center
+
+       return label
+   }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
         view.addView(imageView)
-        view.addView(label)
+        view.addView(nameRecipesLabel)
+        view.addView(instructionLabel)
         setConstraints()
 
     }
@@ -47,10 +54,14 @@ extension DetailsViewController {
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             imageView.heightAnchor.constraint(equalToConstant: 250),
 
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
+            nameRecipesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
 
+            instructionLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 32),
+            instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 }

@@ -13,7 +13,6 @@ final class ListOfRecipesViewController: UIViewController {
     private let router: ListRouter = Router.shared
     private let searchController = UISearchController()
     private var searchBarText: String = ""
-    private let detailsVC = DetailsViewController()
 
     private var randomRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
@@ -32,7 +31,11 @@ final class ListOfRecipesViewController: UIViewController {
         setConstraints()
         updateUi()
         setupSearchController()
+        getRandomRecipes()
 
+    }
+
+    private func getRandomRecipes() {
         networkManager.getRandomRecipes(url: Link.url) { [weak self] result in
             switch result {
 
@@ -56,17 +59,16 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let indexPath = randomRecipes[indexPath.row]
-        cell.textLabel?.text = indexPath.title
         cell.configure(with: indexPath)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = randomRecipes[indexPath.row]
-        detailsVC.label.text = indexPath.title
-        detailsVC.imageView.image = UIImage(systemName: indexPath.image)
-        present(detailsVC, animated: true)
-        // router.showDetails(from: self)
+        let indexPathTitle = randomRecipes[indexPath.row].title
+        let indexPathImage = randomRecipes[indexPath.row].image
+        let indexPathInstruction = randomRecipes[indexPath.row].instructions
+
+        router.showDetails(from: self, with: indexPathTitle, with: indexPathInstruction, image: indexPathImage)
     }
 }
 

@@ -14,8 +14,8 @@ extension UIViewController {
 
         let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in
             textField?.text = ""
-
         }
+        
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }

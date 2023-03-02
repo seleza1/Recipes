@@ -12,7 +12,7 @@ final class LoginViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
     private var person: [String: String] = [:]
     private let router: LoginRouter = Router.shared
-    let networkManager = NetworkManager()
+    private let networkManager = NetworkManager()
 
     private let loginTextField: UITextField = {
         let textField = UITextField()
