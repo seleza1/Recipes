@@ -77,8 +77,14 @@ final class ListOfRecipesViewController: UIViewController {
         updateUi()
         setupSearchController()
         getRandomRecipes()
+        retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
 
 
+    }
+
+    @objc func getAgain() {
+        uiView.isHidden = true
+        getRandomRecipes()
     }
 
     private func getRandomRecipes() {
@@ -145,6 +151,11 @@ extension ListOfRecipesViewController {
             errorLabel.topAnchor.constraint(equalTo: connectionFiledLabel.bottomAnchor, constant: 16),
             errorLabel.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 16),
             errorLabel.trailingAnchor.constraint(equalTo: uiView.trailingAnchor, constant: -16),
+
+            retryButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 16),
+            retryButton.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 125),
+            retryButton.trailingAnchor.constraint(equalTo: uiView.trailingAnchor, constant: -125),
+            retryButton.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 
@@ -168,8 +179,6 @@ extension ListOfRecipesViewController {
         title = "List of recipes"
         activityIndicator.startAnimating()
         uiView.isHidden = true
-
-
     }
 
     private func addViews() {
