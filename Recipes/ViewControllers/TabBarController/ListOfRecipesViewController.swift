@@ -34,7 +34,7 @@ final class ListOfRecipesViewController: UIViewController {
 
     private let uiView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.9018464684, green: 0.9260535836, blue: 0.9430833459, alpha: 1)
+        view.backgroundColor = .white
 
         return view
     }()
@@ -135,11 +135,11 @@ extension ListOfRecipesViewController {
             uiView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             uiView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
 
-            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            connectionFiledLabel.topAnchor.constraint(equalTo: uiView.topAnchor, constant: 125),
+            connectionFiledLabel.topAnchor.constraint(equalTo: uiView.topAnchor, constant: 200),
             connectionFiledLabel.leadingAnchor.constraint(equalTo: uiView.leadingAnchor, constant: 16),
             connectionFiledLabel.trailingAnchor.constraint(equalTo: uiView.trailingAnchor, constant: -16),
 
