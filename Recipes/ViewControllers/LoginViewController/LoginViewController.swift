@@ -94,6 +94,7 @@ final class LoginViewController: UIViewController {
             let person = [loginTextField.text: passwordTextField.text]
             userDefaults.set(person, forKey: "password")
             succesLabel.isHidden = false
+            failureLabel.isHidden = true
         }
     }
 
@@ -120,7 +121,7 @@ extension LoginViewController {
             loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
-            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 16),
+            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 18),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 
