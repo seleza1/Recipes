@@ -7,17 +7,29 @@
 
 import Foundation
 
-struct Recipe: Decodable {
-    let recipes: [Recipes]
+//struct Recipe: Decodable {
+//    let recipes: [Recipes]
+//}
+//
+//// поправить нейминг
+//
+//// MARK: - Recipe
+//struct Recipes: Decodable {
+//    let title: String
+//    let image: String
+//    let instructions: String
+//    let readyInMinutes: Int
+//}
+
+// новый
+
+struct Recipesss: Decodable {
+    let results: [Resultss]
 }
 
-// поправить нейминг
-
-// MARK: - Recipe
-struct Recipes: Decodable {
+// MARK: - Result
+struct Resultss: Decodable {
     let title: String
     let image: String
-    let instructions: String
-    let readyInMinutes: Int
 }
 

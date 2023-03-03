@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 extension UITableViewCell {
-    func configure(recipe: Recipes) {
+    func configure(recipe: Resultss) {
         var content = defaultContentConfiguration()
         content.text = recipe.title
         guard let url = URL(string: recipe.image) else { return }

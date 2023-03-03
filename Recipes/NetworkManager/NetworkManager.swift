@@ -15,7 +15,7 @@ enum NetworkError: Error {
 
 final class NetworkManager {
 
-    func getRandomRecipes(url: String, completion: @escaping(Result<[Recipes], NetworkError>) -> Void) {
+    func getRandomRecipes(url: String, completion: @escaping(Result<[Resultss], NetworkError>) -> Void) {
         guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -27,9 +27,9 @@ final class NetworkManager {
             // String(data: data, encoding: .utf8).map { print($0) }
             
             do {
-                let json = try JSONDecoder().decode(Recipe.self, from: data)
+                let json = try JSONDecoder().decode(Recipesss.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(json.recipes))
+                    completion(.success(json.results))
                 }
             } catch {
                 completion(.failure(.decodingError))

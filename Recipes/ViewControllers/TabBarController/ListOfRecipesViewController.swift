@@ -11,10 +11,10 @@ final class ListOfRecipesViewController: UIViewController {
     
     private let identifier = "cell"
     private let searchController = UISearchController()
-    private var searchBarText: String = ""
+    private var searchBarText = ""
     
     // private let router: ListRouter = Router.shared
-    private var randomRecipes: [Recipes] = []
+    private var randomRecipes: [Resultss] = []
     private let networkManager = NetworkManager()
     private let detailsVC = DetailsViewController()
     var image: UIImage!
@@ -85,7 +85,9 @@ final class ListOfRecipesViewController: UIViewController {
     }
 
     private func getRandomRecipes() {
-        networkManager.getRandomRecipes(url: Link.url) { [weak self] result in
+
+        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)"
+        networkManager.getRandomRecipes(url: url) { [weak self] result in
             switch result {
 
             case .success(let recipes):
@@ -128,8 +130,8 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let modelRecipes = randomRecipes[indexPath.row]
         detailsVC.nameRecipesLabel.text = modelRecipes.title
-        detailsVC.ingredientsLabel.text = modelRecipes.instructions
-        detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
+        // detailsVC.ingredientsLabel.text = modelRecipes.title
+        // detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
         // detailsVC
 
         present(detailsVC, animated: true)
@@ -203,8 +205,10 @@ extension ListOfRecipesViewController {
 }
 
 extension ListOfRecipesViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBarText = searchText
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBarText = searchBar.text!
+        getRandomRecipes()
+
     }
 }
 
