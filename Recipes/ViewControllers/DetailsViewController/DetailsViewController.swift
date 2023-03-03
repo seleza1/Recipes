@@ -50,6 +50,7 @@ final class DetailsViewController: UIViewController {
         addViews()
         setConstraints()
     }
+    
 }
 
 extension DetailsViewController {
@@ -60,7 +61,7 @@ extension DetailsViewController {
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             imageView.heightAnchor.constraint(equalToConstant: 250),
 
-            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             nameRecipesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
@@ -69,7 +70,7 @@ extension DetailsViewController {
             ingredientsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            cookingTimeLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
+            cookingTimeLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 32),
             cookingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             cookingTimeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
