@@ -40,6 +40,8 @@ final class DetailsViewController: UIViewController {
         addViews()
         setConstraints()
     }
+
+
 }
 
 extension DetailsViewController {

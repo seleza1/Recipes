@@ -8,16 +8,16 @@
 import UIKit
 
 protocol ListRouter {
-    func showDetails(from viewController: UIViewController, recipe: String, instruction: String, image: String)
+    func showDetails(from viewController: UIViewController, recipe: String, instruction: String, image: Recipes)
 }
 
 extension Router: ListRouter {
 
-    func showDetails(from viewController: UIViewController, recipe: String, instruction: String, image: String) {
+    func showDetails(from viewController: UIViewController, recipe: String, instruction: String, image: Recipes) {
         let detailsViewController = DetailsViewController()
         detailsViewController.nameRecipesLabel.text = recipe
         detailsViewController.instructionLabel.text = instruction
-        detailsViewController.imageView.image = UIImage(named: "plateWithFood")
+        detailsViewController.imageView.image = UIImage(named: "\(image)")
         detailsViewController.modalPresentationStyle = .pageSheet
         viewController.present(detailsViewController, animated: true, completion: nil)
     }
