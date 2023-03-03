@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate {
+    func showList(from viewController: UIViewController)
+}
+
 final class LoginViewController: UIViewController {
 
     private let userDefaults = UserDefaults.standard
     private var person: [String: String] = [:]
-    private let router: LoginRouter = Router.shared
+    // private let router: LoginRouter = Router.shared
     private let networkManager = NetworkManager()
 
     private let loginTextField: UITextField = {
@@ -101,7 +105,7 @@ final class LoginViewController: UIViewController {
         let personal = [loginTextField.text: passwordTextField.text] as? [String: String] ?? [:]
 
         if personal == person {
-            router.showMain(from: self)
+            showList(from: self)
 
             failureLabel.isHidden = true
             loginTextField.text = ""
@@ -176,5 +180,13 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+extension LoginViewController: LoginViewControllerDelegate {
+    func showList(from viewController: UIViewController) {
+        let listVC = MainTabBarController()
+        listVC.modalPresentationStyle = .fullScreen
+        viewController.present(listVC, animated: true, completion: nil)
     }
 }

@@ -25,7 +25,7 @@ final class DetailsViewController: UIViewController {
         return label
     }()
 
-    let instructionLabel: UILabel = {
+    let ingredientsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = label.font.withSize(12)
@@ -37,6 +37,7 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
         
         addViews()
         setConstraints()
@@ -56,15 +57,15 @@ extension DetailsViewController {
             nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
 
-            instructionLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
-            instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            ingredientsLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
+            ingredientsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 
     private func addViews() {
         view.addView(imageView)
         view.addView(nameRecipesLabel)
-        view.addView(instructionLabel)
+        view.addView(ingredientsLabel)
     }
 }

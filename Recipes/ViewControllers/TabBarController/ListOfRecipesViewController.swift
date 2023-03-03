@@ -13,10 +13,11 @@ final class ListOfRecipesViewController: UIViewController {
     private let searchController = UISearchController()
     private var searchBarText: String = ""
     
-    private let router: ListRouter = Router.shared
+    // private let router: ListRouter = Router.shared
     private var randomRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
-    var image: UIImage?
+    private let detailsVC = DetailsViewController()
+    var image: UIImage!
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -126,7 +127,12 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let modelRecipes = randomRecipes[indexPath.row]
-        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: image!)
+        detailsVC.nameRecipesLabel.text = modelRecipes.title
+        detailsVC.ingredientsLabel.text = modelRecipes.instructions
+
+        present(detailsVC, animated: true)
+//        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)
+        
     }
 }
 
@@ -191,8 +197,6 @@ extension ListOfRecipesViewController {
         uiView.addView(connectionFiledLabel)
         uiView.addView(errorLabel)
         uiView.addView(retryButton)
-
-
     }
 }
 
@@ -201,3 +205,5 @@ extension ListOfRecipesViewController: UISearchBarDelegate {
         searchBarText = searchText
     }
 }
+
+
