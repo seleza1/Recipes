@@ -14,11 +14,9 @@ final class MainTabBarController: UITabBarController {
         updateUi()
         setupTabBar()
     }
+}
 
-    private func updateUi() {
-        view.backgroundColor = .white
-        navigationItem.hidesBackButton = true
-    }
+extension MainTabBarController {
 
     private func setupTabBar() {
         let listOfRecipesViewController = createNavController(viewController: ListOfRecipesViewController(), itemName: "List of recipes", itemImage: "list.bullet")
@@ -27,7 +25,6 @@ final class MainTabBarController: UITabBarController {
         viewControllers = [listOfRecipesViewController, favoriteRecipesViewController]
 
     }
-
     private func createNavController(viewController: UIViewController, itemName: String, itemImage: String) -> UINavigationController {
         let item = UITabBarItem(title: itemName, image: UIImage(systemName: itemImage), tag: 0)
 
@@ -35,5 +32,10 @@ final class MainTabBarController: UITabBarController {
         navigationController.tabBarItem = item
 
         return navigationController
+    }
+
+    private func updateUi() {
+        view.backgroundColor = .white
+        navigationItem.hidesBackButton = true
     }
 }
