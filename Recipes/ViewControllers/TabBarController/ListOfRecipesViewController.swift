@@ -165,7 +165,7 @@ extension ListOfRecipesViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 125
+        tableView.rowHeight = 115
 
     }
 

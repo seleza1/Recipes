@@ -8,5 +8,5 @@
 import Foundation
 
 enum Link {
-    static let url: String = "https://api.spoonacular.com/recipes/random?apiKey=1e87d8aad28344b6a87cdb89464059fb&number=40&tags=dessert"
+    static let url: String = "https://api.spoonacular.com/recipes/random?apiKey=1e87d8aad28344b6a87cdb89464059fb&number=4&tags=dessert"
 }
