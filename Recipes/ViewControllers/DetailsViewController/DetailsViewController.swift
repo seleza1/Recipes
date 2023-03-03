@@ -35,6 +35,15 @@ final class DetailsViewController: UIViewController {
         return label
     }()
 
+    let cookingTimeLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = label.font.withSize(15)
+        label.textAlignment = .center
+
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -56,9 +65,13 @@ extension DetailsViewController {
             nameRecipesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nameRecipesLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 70),
 
-            ingredientsLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
+            ingredientsLabel.topAnchor.constraint(equalTo: cookingTimeLabel.bottomAnchor, constant: 6),
             ingredientsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            cookingTimeLabel.topAnchor.constraint(equalTo: nameRecipesLabel.bottomAnchor, constant: 16),
+            cookingTimeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            cookingTimeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 
@@ -66,5 +79,6 @@ extension DetailsViewController {
         view.addView(imageView)
         view.addView(nameRecipesLabel)
         view.addView(ingredientsLabel)
+        view.addView(cookingTimeLabel)
     }
 }

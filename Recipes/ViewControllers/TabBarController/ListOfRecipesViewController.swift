@@ -129,6 +129,7 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         let modelRecipes = randomRecipes[indexPath.row]
         detailsVC.nameRecipesLabel.text = modelRecipes.title
         detailsVC.ingredientsLabel.text = modelRecipes.instructions
+        detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
         // detailsVC
 
         present(detailsVC, animated: true)
