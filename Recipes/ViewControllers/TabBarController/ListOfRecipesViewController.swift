@@ -86,7 +86,7 @@ final class ListOfRecipesViewController: UIViewController {
 
     private func getRandomRecipes() {
 
-        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)"
+        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)&number=50"
         networkManager.getRandomRecipes(url: url) { [weak self] result in
             switch result {
 
