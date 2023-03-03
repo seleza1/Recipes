@@ -235,12 +235,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE5A34952997854300164496 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
-				CE4F7DD729AF69620057741D /* ShellScript */,
 				659AF4EA6253D7DCBFA5E89F /* [CP] Check Pods Manifest.lock */,
+				CE4F7DD729AF69620057741D /* ShellScript */,
 				CE5A347D2997853D00164496 /* Sources */,
 				CE5A347E2997853D00164496 /* Frameworks */,
 				CE5A347F2997853D00164496 /* Resources */,
 				CE4F7DD129AF48840057741D /* Embed Frameworks */,
+				E1BF603C987E666D7CBA9E03 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +336,23 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			showEnvVarsInLog = 0;
+		};
+		E1BF603C987E666D7CBA9E03 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Recipes/Pods-Recipes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Recipes/Pods-Recipes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Recipes/Pods-Recipes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

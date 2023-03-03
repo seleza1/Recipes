@@ -7,4 +7,5 @@ target 'Recipes' do
 
   # Pods for Recipes
 	pod 'SwiftLint'
+	pod 'Kingfisher'
 end

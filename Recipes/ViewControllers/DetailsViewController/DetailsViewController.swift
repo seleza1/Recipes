@@ -39,6 +39,8 @@ final class DetailsViewController: UIViewController {
         
         addViews()
         setConstraints()
+        print(nameRecipesLabel.text)
+        print(imageView.image)
     }
 
 
