@@ -12,6 +12,7 @@ final class DetailsViewController: UIViewController {
 
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "plateFood")
         return imageView
 
     }()
@@ -37,8 +38,6 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        
         addViews()
         setConstraints()
     }

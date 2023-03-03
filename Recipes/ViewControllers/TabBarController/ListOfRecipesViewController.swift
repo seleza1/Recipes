@@ -129,6 +129,7 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         let modelRecipes = randomRecipes[indexPath.row]
         detailsVC.nameRecipesLabel.text = modelRecipes.title
         detailsVC.ingredientsLabel.text = modelRecipes.instructions
+        // detailsVC
 
         present(detailsVC, animated: true)
 //        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)

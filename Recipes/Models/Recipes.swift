@@ -18,5 +18,6 @@ struct Recipes: Decodable {
     let title: String
     let image: String
     let instructions: String
+    let readyInMinutes: Int
 }
 
