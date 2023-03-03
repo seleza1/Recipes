@@ -8,6 +8,7 @@
 import UIKit
 
 final class DetailsViewController: UIViewController {
+    private let networkManager = NetworkManager()
 
     let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,11 +40,7 @@ final class DetailsViewController: UIViewController {
         
         addViews()
         setConstraints()
-        print(nameRecipesLabel.text)
-        print(imageView.image)
     }
-
-
 }
 
 extension DetailsViewController {

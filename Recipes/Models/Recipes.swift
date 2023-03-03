@@ -11,9 +11,12 @@ struct Recipe: Decodable {
     let recipes: [Recipes]
 }
 
+// поправить нейминг
+
 // MARK: - Recipe
 struct Recipes: Decodable {
     let title: String
     let image: String
     let instructions: String
 }
+

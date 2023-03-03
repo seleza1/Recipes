@@ -10,12 +10,13 @@ import UIKit
 final class ListOfRecipesViewController: UIViewController {
     
     private let identifier = "cell"
-    private let router: ListRouter = Router.shared
     private let searchController = UISearchController()
     private var searchBarText: String = ""
     
+    private let router: ListRouter = Router.shared
     private var randomRecipes: [Recipes] = []
     private let networkManager = NetworkManager()
+    var image: UIImage?
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -124,9 +125,8 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = randomRecipes[indexPath.row]
-
-        router.showDetails(from: self, recipe: indexPath.title, instruction: indexPath.instructions, image: indexPath)
+        let modelRecipes = randomRecipes[indexPath.row]
+        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: image!)
     }
 }
 
