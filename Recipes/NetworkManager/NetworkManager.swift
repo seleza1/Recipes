@@ -15,7 +15,7 @@ enum NetworkError: Error {
 
 final class NetworkManager {
 
-    func getRandomRecipes(url: String, completion: @escaping(Result<[Resultss], NetworkError>) -> Void) {
+    func getSearchRecipes(url: String, completion: @escaping(Result<[Resultss], NetworkError>) -> Void) {
         guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -38,19 +38,41 @@ final class NetworkManager {
         
     }
 
-    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-        guard let url = URL(string: url ?? "") else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else {
+    func fetchImage(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
                 completion(.failure(.noData))
+                print(error?.localizedDescription ?? "No error description")
                 return
             }
             DispatchQueue.main.async {
-                completion(.success(imageData))
+                completion(.success(data))
             }
-        }
+
+        }.resume()
     }
+
+    func getRandomRecipes(url: String, completion: @escaping(Result<[Recipe], NetworkError>) -> Void) {
+        guard let url = URL(string: url) else { return }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                completion(.failure(.invalidURL))
+                return
+            }
+
+            // String(data: data, encoding: .utf8).map { print($0) }
+
+            do {
+                let json = try JSONDecoder().decode(Recipes.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(json.recipes))
+                }
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+
+    }
+
 }

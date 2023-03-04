@@ -86,8 +86,8 @@ final class ListOfRecipesViewController: UIViewController {
 
     private func getRandomRecipes() {
 
-        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)&number=50"
-        networkManager.getRandomRecipes(url: url) { [weak self] result in
+        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)&number=35"
+        networkManager.getSearchRecipes(url: url) { [weak self] result in
             switch result {
 
             case .success(let recipes):
@@ -190,7 +190,7 @@ extension ListOfRecipesViewController {
     private func updateUi() {
         view.backgroundColor = .white
         title = "List of recipes"
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         uiView.isHidden = true
     }
 
@@ -206,10 +206,9 @@ extension ListOfRecipesViewController {
 
 extension ListOfRecipesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        activityIndicator.startAnimating()
         searchBarText = searchBar.text!
         getRandomRecipes()
 
     }
 }
-
-
