@@ -19,7 +19,7 @@
 		CEA530C429ACDF27001E1522 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530C329ACDF27001E1522 /* NetworkManager.swift */; };
 		CEA530C629ACDF33001E1522 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530C529ACDF33001E1522 /* Recipes.swift */; };
 		CEA530C829ACE571001E1522 /* ListOfRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530C729ACE571001E1522 /* ListOfRecipesViewController.swift */; };
-		CEA530CB29ACE5EB001E1522 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */; };
+		CEA530CB29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CA29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift */; };
 		CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CC29ACF126001E1522 /* DetailsViewController.swift */; };
 		CEB17AB129B1DB9D00AD360F /* UiTableViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17AB029B1DB9D00AD360F /* UiTableViewCell + Extension.swift */; };
 		CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */; };
@@ -58,7 +58,7 @@
 		CEA530C329ACDF27001E1522 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEA530C529ACDF33001E1522 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		CEA530C729ACE571001E1522 /* ListOfRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRecipesViewController.swift; sourceTree = "<group>"; };
-		CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
+		CEA530CA29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDesertsRecipesViewController.swift; sourceTree = "<group>"; };
 		CEA530CC29ACF126001E1522 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CEB17AB029B1DB9D00AD360F /* UiTableViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiTableViewCell + Extension.swift"; sourceTree = "<group>"; };
 		CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			children = (
 				CEA530BB29ABE04F001E1522 /* MainTabBarController.swift */,
 				CEA530C729ACE571001E1522 /* ListOfRecipesViewController.swift */,
-				CEA530CA29ACE5EB001E1522 /* FavoriteRecipesViewController.swift */,
+				CEA530CA29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -365,7 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEA530CB29ACE5EB001E1522 /* FavoriteRecipesViewController.swift in Sources */,
+				CEA530CB29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift in Sources */,
 				CEA530C429ACDF27001E1522 /* NetworkManager.swift in Sources */,
 				CEA530C029AC8171001E1522 /* UiViewController + Extension.swift in Sources */,
 				CE82272D29B3AC8100CE8EC8 /* UiCollectionViewCell.swift in Sources */,

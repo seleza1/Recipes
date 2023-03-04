@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FavoriteRecipesViewController: UIViewController {
+final class TopDesertsRecipesViewController: UIViewController {
 
     private let detailsVC = DetailsViewController()
 
@@ -60,7 +60,12 @@ final class FavoriteRecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         addViews()
+        updateUi()
+        fetchRandomRecipes()
+        setConstraints()
+
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -69,21 +74,15 @@ final class FavoriteRecipesViewController: UIViewController {
         layout.itemSize = CGSize(width: (view.frame.size.width / 2 ) - 4, height: (view.frame.size.width / 2 ) - 4)
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        guard let collectionView = collectionView else { return }
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
+        guard let collectionViews = collectionView else { return }
+        collectionViews.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
 
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.frame = view.bounds
+        collectionViews.delegate = self
+        collectionViews.dataSource = self
+        collectionViews.frame = view.bounds
+        view.addView(collectionViews)
 
-        view.addView(collectionView)
-        fetchRandomRecipes()
-        retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
-        updateUi()
-        setConstraints()
-
-
-        //fetchSuperheroes()
+        addTarget()
     }
 
     @objc func getAgain() {
@@ -97,25 +96,19 @@ final class FavoriteRecipesViewController: UIViewController {
             case .success(let recipe):
                 self?.randomRecipe = recipe
                 self?.activityIndicator.stopAnimating()
-
-                DispatchQueue.main.async {
-                    self?.collectionView?.reloadData()
-
-                }
+                self?.collectionView?.reloadData()
             case .failure( _):
                 DispatchQueue.main.async {
                     self?.uiView.isHidden = false
-
                 }
             }
         }
     }
 }
 
-extension FavoriteRecipesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TopDesertsRecipesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         randomRecipe.count
-//        randomRecipe.count
    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -137,7 +130,7 @@ extension FavoriteRecipesViewController: UICollectionViewDelegate, UICollectionV
     }
 }
 
-extension FavoriteRecipesViewController {
+extension TopDesertsRecipesViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
 
@@ -167,14 +160,20 @@ extension FavoriteRecipesViewController {
     private func updateUi() {
         uiView.isHidden = true
         activityIndicator.startAnimating()
+
     }
 
     private func addViews() {
-        view.addView(activityIndicator)
-        view.addView(uiView)
         uiView.addView(connectionFiledLabel)
         uiView.addView(errorLabel)
         uiView.addView(retryButton)
+        view.addView(activityIndicator)
+        view.addView(uiView)
+    }
+
+    private func addTarget(){
+        retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
+
     }
 }
 
