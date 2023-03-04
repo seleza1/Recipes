@@ -8,6 +8,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
+    
     private let labelNameRecipe: UILabel = {
         let label = UILabel()
 
@@ -20,17 +21,13 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
 
-    private var activityIndicator: UIActivityIndicatorView?
+    private let networkManager = NetworkManager()
+
     private var imageURL: URL? {
         didSet {
             imageView.image = nil
             updateImage()
         }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        activityIndicator = showSpinner(in: imageView)
     }
 
     func configure(with recipe: Recipe) {
@@ -45,7 +42,6 @@ class CollectionViewCell: UICollectionViewCell {
             case .success(let image):
                 if imageURL == self?.imageURL {
                     self?.imageView.image = image
-                    self?.activityIndicator?.stopAnimating()
                 }
             case .failure(let error):
                 print(error)
@@ -55,7 +51,7 @@ class CollectionViewCell: UICollectionViewCell {
 
     private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
         // Download image from url
-        NetworkManager.shared.fetchImage(from: url) { result in
+        networkManager.fetchImage(from: url) { result in
             switch result {
             case .success(let imageData):
                 guard let uiImage = UIImage(data: imageData) else { return }
@@ -66,17 +62,17 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
 
-    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = .white
-        activityIndicator.startAnimating()
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-
-        view.addSubview(activityIndicator)
-
-        return activityIndicator
-    }
+//    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+//        let activityIndicator = UIActivityIndicatorView(style: .medium)
+//        activityIndicator.color = .white
+//        activityIndicator.startAnimating()
+//        activityIndicator.center = view.center
+//        activityIndicator.hidesWhenStopped = true
+//
+//        view.addSubview(activityIndicator)
+//
+//        return activityIndicator
+//    }
 
 }
 
