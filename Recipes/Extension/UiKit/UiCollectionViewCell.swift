@@ -8,26 +8,47 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
+
+    static let identifier = "Custom"
+    private let networkManager = NetworkManager()
+
     private let labelNameRecipe: UILabel = {
         let label = UILabel()
+        label.text = "CollectionViewCellv"
+        label.textAlignment = .center
+        label.numberOfLines = 0
 
         return label
     }()
 
     private let imageView: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "plateFood")
         
         return image
     }()
 
-    private let networkManager = NetworkManager()
 
     private var imageURL: URL? {
         didSet {
             imageView.image = nil
             updateImage()
         }
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addView(imageView)
+        contentView.addView(labelNameRecipe)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        labelNameRecipe.frame = CGRect(x: 4, y: Int(contentView.frame.size.height) - 50, width: Int(contentView.frame.size.width) - 10, height: 50)
+
+        imageView.frame = CGRect(x: 4, y: 0, width: Int(contentView.frame.size.width) - 10, height: Int(contentView.frame.size.height) - 50)
     }
 
     func configure(with recipe: Recipe) {

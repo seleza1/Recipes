@@ -19,8 +19,8 @@ final class MainTabBarController: UITabBarController {
 extension MainTabBarController {
 
     private func setupTabBar() {
-        let listOfRecipesViewController = createNavController(viewController: ListOfRecipesViewController(), itemName: "List of recipes", itemImage: "list.bullet")
-        let favoriteRecipesViewController = createNavController(viewController: FavoriteRecipesViewController(), itemName: "Favorite recipes", itemImage: "brain")
+        let listOfRecipesViewController = createNavController(viewController: ListOfRecipesViewController(), itemName: "Search recipes", itemImage: "list.bullet")
+        let favoriteRecipesViewController = createNavController(viewController: FavoriteRecipesViewController(), itemName: "Top deserts", itemImage: "brain")
 
         viewControllers = [listOfRecipesViewController, favoriteRecipesViewController]
 
