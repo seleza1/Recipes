@@ -113,10 +113,10 @@
 		CE5A34832997853D00164496 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				CEB63D0529B48DF700108D43 /* Services */,
 				CE5A349B2997863000164496 /* Applications */,
 				CEA530C129ACDE3F001E1522 /* Models */,
 				CE5A349D299786A500164496 /* ViewControllers */,
+				CEB63D0529B48DF700108D43 /* Services */,
 				CED4E1CA29ADD6C3009DF970 /* Router */,
 				CEA530BD29AC813C001E1522 /* Extension */,
 				CE5A349C2997865E00164496 /* Resources */,
