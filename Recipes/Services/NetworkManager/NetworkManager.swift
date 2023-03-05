@@ -76,3 +76,21 @@ final class NetworkManager {
     }
 
 }
+
+
+
+
+
+func async(url: String) async throws -> [Resultss] { // throws error
+    guard let url = URL(string: url) else {
+        throw NetworkError.invalidURL
+    }
+
+    let (data, _) = try await URLSession.shared.data(from: url)
+    guard let json = try? JSONDecoder().decode(Recipesss.self, from: data) else {
+        throw NetworkError.decodingError
+    }
+
+    return json.results
+
+}
