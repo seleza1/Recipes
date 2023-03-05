@@ -9,6 +9,9 @@ import UIKit
 
 final class TopDesertsRecipesViewController: UIViewController {
 
+    private let searchController = UISearchController()
+    private var searchBarText = ""
+
     private let activityIndicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         activity.hidesWhenStopped = true
@@ -51,7 +54,7 @@ final class TopDesertsRecipesViewController: UIViewController {
         return button
     }()
 
-    private var randomRecipe: [Recipe] = []
+    private var randomRecipe: [Resultss] = []
     private let networkManager = NetworkManager()
 
     private var collectionView: UICollectionView?
@@ -61,8 +64,9 @@ final class TopDesertsRecipesViewController: UIViewController {
 
         addViews()
         updateUi()
-        fetchRandomRecipes()
+        getRandomRecipes()
         setConstraints()
+        setupSearchController()
 
 
         let layout = UICollectionViewFlowLayout()
@@ -85,23 +89,27 @@ final class TopDesertsRecipesViewController: UIViewController {
 
     @objc func getAgain() {
         uiView.isHidden = true
-        fetchRandomRecipes()
+        getRandomRecipes()
     }
 
-    private func fetchRandomRecipes() {
-        networkManager.getRandomRecipes(url: Link.url) { [weak self] result in
+    private func getRandomRecipes() {
+
+        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
+        networkManager.getSearchRecipes(url: url) { [weak self] result in
             switch result {
-            case .success(let recipe):
-                self?.randomRecipe = recipe
+
+            case .success(let recipes):
+                self?.randomRecipe = recipes
                 self?.activityIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self?.collectionView?.reloadData()
-
                 }
             case .failure( _):
+                print("error")
                 DispatchQueue.main.async {
                     self?.uiView.isHidden = false
-                    print("error")
+//                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
+//                    self?.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -118,17 +126,17 @@ extension TopDesertsRecipesViewController: UICollectionViewDelegate, UICollectio
             return UICollectionViewCell()
         }
         let recipe = randomRecipe[indexPath.row]
-        cell.configure(with: recipe)
+        cell.configure(name: recipe, image: recipe)
        return cell
    }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let modelRecipes = randomRecipe[indexPath.row]
-         let detailsVC = DetailsViewController()
-        detailsVC.model = modelRecipes
-        present(detailsVC, animated: true)
-
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let modelRecipes = randomRecipe[indexPath.row]
+//         let detailsVC = DetailsViewController()
+//        detailsVC.model = modelRecipes
+//        present(detailsVC, animated: true)
+//
+//    }
 }
 
 extension TopDesertsRecipesViewController {
@@ -173,8 +181,24 @@ extension TopDesertsRecipesViewController {
         view.addView(uiView)
     }
 
+    private func setupSearchController() {
+        navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "What recipe are you looking for?"
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+
+    }
+
     private func addTarget(){
         retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
+    }
+}
+
+extension TopDesertsRecipesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        activityIndicator.startAnimating()
+        searchBarText = searchBar.text!
+        print("Search")
 
     }
 }

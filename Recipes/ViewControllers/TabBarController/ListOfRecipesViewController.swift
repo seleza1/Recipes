@@ -10,11 +10,8 @@ import UIKit
 final class ListOfRecipesViewController: UIViewController {
     
     private let identifier = "cell"
-    private let searchController = UISearchController()
-    private var searchBarText = ""
     
-    // private let router: ListRouter = Router.shared
-    private var randomRecipes: [Resultss] = []
+    private var randomRecipes: [Recipe] = []
     private let networkManager = NetworkManager()
     var image: UIImage!
 
@@ -73,33 +70,28 @@ final class ListOfRecipesViewController: UIViewController {
         updateTableView()
         setConstraints()
         updateUi()
-        setupSearchController()
-        getRandomRecipes()
+        fetchRandomRecipes()
         retryButton.addTarget(self, action: #selector(getAgain), for: .touchUpInside)
     }
 
     @objc func getAgain() {
         uiView.isHidden = true
-        getRandomRecipes()
+        fetchRandomRecipes()
     }
 
-    private func getRandomRecipes() {
-
-        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=f5fdaf7f620a46fbb4e95d21e78def61&query=\(searchBarText)&number=35"
-        networkManager.getSearchRecipes(url: url) { [weak self] result in
+    private func fetchRandomRecipes() {
+        networkManager.getRandomRecipes(url: Link.url) { [weak self] result in
             switch result {
-
-            case .success(let recipes):
-                self?.randomRecipes = recipes
+            case .success(let recipe):
+                self?.randomRecipes = recipe
                 self?.activityIndicator.stopAnimating()
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
+
                 }
             case .failure( _):
                 DispatchQueue.main.async {
                     self?.uiView.isHidden = false
-//                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
-//                    self?.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -117,8 +109,8 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         }
         let indexPath = randomRecipes[indexPath.row]
 
-        cell.configure(name: indexPath, image: indexPath)
-        // cell.configure(recipe: indexPath)
+             cell.configure(name: indexPath, image: indexPath)
+
 
         return cell
     }
@@ -130,18 +122,17 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailsVC = DetailsViewController()
-//        let modelRecipes = randomRecipes[indexPath.row]
-//        detailsVC.model = modelRecipes
-//        // detailsVC.ingredientsLabel.text = modelRecipes.title
-//        // detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
-//        // detailsVC
-//
-//        present(detailsVC, animated: true)
-////        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)
-//
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC = DetailsViewController()
+        let modelRecipes = randomRecipes[indexPath.row]
+        detailsVC.model = modelRecipes
+         detailsVC.ingredientsLabel.text = modelRecipes.title
+         detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
+
+        present(detailsVC, animated: true)
+//        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)
+
+    }
 }
 
 extension ListOfRecipesViewController {
@@ -183,18 +174,10 @@ extension ListOfRecipesViewController {
 
     }
 
-    private func setupSearchController() {
-        navigationItem.searchController = searchController
-        searchController.searchBar.placeholder = "What recipe are you looking for?"
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-
-    }
-
     private func updateUi() {
         view.backgroundColor = .white
         title = "List of recipes"
-        //activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
         uiView.isHidden = true
     }
 
@@ -208,11 +191,4 @@ extension ListOfRecipesViewController {
     }
 }
 
-extension ListOfRecipesViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        activityIndicator.startAnimating()
-        searchBarText = searchBar.text!
-        getRandomRecipes()
 
-    }
-}

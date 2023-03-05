@@ -54,9 +54,10 @@ class CollectionViewCell: UICollectionViewCell {
         imageView.frame = CGRect(x: 4, y: 0, width: Int(contentView.frame.size.width) - 10, height: Int(contentView.frame.size.height) - 50)
     }
 
-    func configure(with recipe: Recipe) {
-        labelNameRecipe.text = recipe.title
-        imageURL = URL(string: recipe.image)
+    public func configure(name: Resultss, image: Resultss) {
+        labelNameRecipe.text = name.title
+        imageURL = URL(string: image.image)
+
     }
 
     private func updateImage() {

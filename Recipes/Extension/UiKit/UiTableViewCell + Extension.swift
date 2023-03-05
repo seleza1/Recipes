@@ -83,7 +83,7 @@ final class MainTableViewCell: UITableViewCell {
 
     }
 
-    public func configure(name: Resultss, image: Resultss) {
+    public func configure(name: Recipe, image: Recipe) {
         valueLabel.text = name.title
         imageURL = URL(string: image.image)
 
@@ -107,7 +107,7 @@ extension MainTableViewCell {
         NSLayoutConstraint.activate([
 
             imageViews.topAnchor.constraint(equalTo: topAnchor, constant: 1),
-            imageViews.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
+            imageViews.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             imageViews.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
             // imageViews.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -250),
             imageViews.widthAnchor.constraint(equalToConstant: 150),
@@ -115,7 +115,7 @@ extension MainTableViewCell {
             valueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
-            valueLabel.leadingAnchor.constraint(equalTo: imageViews.trailingAnchor, constant: -1)
+            valueLabel.leadingAnchor.constraint(equalTo: imageViews.trailingAnchor, constant: 6)
 
         ])
     }
