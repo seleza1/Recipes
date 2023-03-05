@@ -10,6 +10,9 @@ import UIKit
 final class DetailsViewController: UIViewController {
     private let networkManager = NetworkManager()
 
+    var model: Recipe!
+
+
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "plateFood")
@@ -43,12 +46,51 @@ final class DetailsViewController: UIViewController {
 
         return label
     }()
+    private var imageURL: URL? {
+        didSet {
+            imageView.image = nil
+            updateImage()
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         addViews()
         setConstraints()
+        nameRecipesLabel.text = model.title
+        imageURL = URL(string: model.image)
+        cookingTimeLabel.text = "\(model.readyInMinutes)"
+        ingredientsLabel.text = model.instructions
+
+    }
+
+    private func updateImage() {
+        guard let imageURL = imageURL else { return }
+        getImage(from: imageURL) { [weak self] result in
+            switch result {
+            case .success(let image):
+                if imageURL == self?.imageURL {
+                    self?.imageView.image = image
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+
+    private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
+        networkManager.fetchImage(from: url) { result in
+            switch result {
+            case .success(let imageData):
+                guard let uiImage = UIImage(data: imageData) else { return }
+                completion(.success(uiImage))
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }

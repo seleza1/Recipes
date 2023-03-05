@@ -26,7 +26,6 @@ class CollectionViewCell: UICollectionViewCell {
 
     private let imageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "plateFood")
         
         return image
     }()

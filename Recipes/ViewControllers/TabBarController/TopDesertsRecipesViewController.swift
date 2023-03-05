@@ -9,8 +9,6 @@ import UIKit
 
 final class TopDesertsRecipesViewController: UIViewController {
 
-    private let detailsVC = DetailsViewController()
-
     private let activityIndicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         activity.hidesWhenStopped = true
@@ -126,9 +124,8 @@ extension TopDesertsRecipesViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let modelRecipes = randomRecipe[indexPath.row]
-        detailsVC.nameRecipesLabel.text = modelRecipes.title
-        detailsVC.ingredientsLabel.text = modelRecipes.instructions
-        detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
+         let detailsVC = DetailsViewController()
+        detailsVC.model = modelRecipes
         present(detailsVC, animated: true)
 
     }

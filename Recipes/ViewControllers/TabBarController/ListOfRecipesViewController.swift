@@ -16,7 +16,6 @@ final class ListOfRecipesViewController: UIViewController {
     // private let router: ListRouter = Router.shared
     private var randomRecipes: [Resultss] = []
     private let networkManager = NetworkManager()
-    private let detailsVC = DetailsViewController()
     var image: UIImage!
 
     private let tableView: UITableView = {
@@ -131,17 +130,18 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let modelRecipes = randomRecipes[indexPath.row]
-        detailsVC.nameRecipesLabel.text = modelRecipes.title
-        // detailsVC.ingredientsLabel.text = modelRecipes.title
-        // detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
-        // detailsVC
-
-        present(detailsVC, animated: true)
-//        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)
-        
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailsVC = DetailsViewController()
+//        let modelRecipes = randomRecipes[indexPath.row]
+//        detailsVC.model = modelRecipes
+//        // detailsVC.ingredientsLabel.text = modelRecipes.title
+//        // detailsVC.cookingTimeLabel.text = "Cooking time - \(modelRecipes.readyInMinutes) min."
+//        // detailsVC
+//
+//        present(detailsVC, animated: true)
+////        router.showDetails(from: self, recipe: modelRecipes.title, instruction: modelRecipes.instructions, image: UIImage(named: "plateFood")!)
+//
+//    }
 }
 
 extension ListOfRecipesViewController {

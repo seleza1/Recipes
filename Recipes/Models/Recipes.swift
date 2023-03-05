@@ -24,6 +24,6 @@ struct Recipesss: Decodable {
 
 struct Resultss: Decodable {
     let title: String
-    let image: String
+    var image: String
 }
 
