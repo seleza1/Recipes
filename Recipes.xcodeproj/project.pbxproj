@@ -22,6 +22,7 @@
 		CEA530CB29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CA29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift */; };
 		CEA530CD29ACF126001E1522 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA530CC29ACF126001E1522 /* DetailsViewController.swift */; };
 		CEB17AB129B1DB9D00AD360F /* UiTableViewCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17AB029B1DB9D00AD360F /* UiTableViewCell + Extension.swift */; };
+		CEB63D0729B48E1600108D43 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB63D0629B48E1600108D43 /* CacheManager.swift */; };
 		CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */; };
 		CED4E1CC29ADD6D6009DF970 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CB29ADD6D6009DF970 /* Router.swift */; };
 		CED4E1CE29ADD737009DF970 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4E1CD29ADD737009DF970 /* LoginRouter.swift */; };
@@ -61,6 +62,7 @@
 		CEA530CA29ACE5EB001E1522 /* TopDesertsRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDesertsRecipesViewController.swift; sourceTree = "<group>"; };
 		CEA530CC29ACF126001E1522 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CEB17AB029B1DB9D00AD360F /* UiTableViewCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiTableViewCell + Extension.swift"; sourceTree = "<group>"; };
+		CEB63D0629B48E1600108D43 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		CED4E1C829ADC5B4009DF970 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		CED4E1CB29ADD6D6009DF970 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CED4E1CD29ADD737009DF970 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -111,10 +113,10 @@
 		CE5A34832997853D00164496 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				CEB63D0529B48DF700108D43 /* Services */,
 				CE5A349B2997863000164496 /* Applications */,
 				CEA530C129ACDE3F001E1522 /* Models */,
 				CE5A349D299786A500164496 /* ViewControllers */,
-				CEA530C229ACDE46001E1522 /* NetworkManager */,
 				CED4E1CA29ADD6C3009DF970 /* Router */,
 				CEA530BD29AC813C001E1522 /* Extension */,
 				CE5A349C2997865E00164496 /* Resources */,
@@ -211,6 +213,15 @@
 				CEA530CC29ACF126001E1522 /* DetailsViewController.swift */,
 			);
 			path = DetailsViewController;
+			sourceTree = "<group>";
+		};
+		CEB63D0529B48DF700108D43 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEB63D0629B48E1600108D43 /* CacheManager.swift */,
+				CEA530C229ACDE46001E1522 /* NetworkManager */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CED4E1CA29ADD6C3009DF970 /* Router */ = {
@@ -375,6 +386,7 @@
 				CED4E1C929ADC5B4009DF970 /* UIView + Extension.swift in Sources */,
 				CE5A34892997853D00164496 /* LoginViewController.swift in Sources */,
 				CED4E1D029ADDB84009DF970 /* ListRouter.swift in Sources */,
+				CEB63D0729B48E1600108D43 /* CacheManager.swift in Sources */,
 				CED4E1D229AE1188009DF970 /* Link.swift in Sources */,
 				CE5A34852997853D00164496 /* AppDelegate.swift in Sources */,
 				CEA530C829ACE571001E1522 /* ListOfRecipesViewController.swift in Sources */,

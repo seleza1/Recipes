@@ -12,6 +12,9 @@ class CollectionViewCell: UICollectionViewCell {
     static let identifier = "Custom"
     private let networkManager = NetworkManager()
 
+    private var activityIndicator: UIActivityIndicatorView?
+
+
     private let labelNameRecipe: UILabel = {
         let label = UILabel()
         label.text = "CollectionViewCellv"
@@ -40,6 +43,7 @@ class CollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addView(imageView)
         contentView.addView(labelNameRecipe)
+        activityIndicator = showSpinner(in: imageView)
     }
 
     required init?(coder: NSCoder) {
@@ -64,6 +68,8 @@ class CollectionViewCell: UICollectionViewCell {
                 if imageURL == self?.imageURL {
                     self?.imageView.image = image
                 }
+                self?.activityIndicator?.stopAnimating()
+
             case .failure(let error):
                 print(error)
             }
@@ -71,7 +77,6 @@ class CollectionViewCell: UICollectionViewCell {
     }
 
     private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
-        // Download image from url
         networkManager.fetchImage(from: url) { result in
             switch result {
             case .success(let imageData):
@@ -83,17 +88,17 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
 
-//    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-//        let activityIndicator = UIActivityIndicatorView(style: .medium)
-//        activityIndicator.color = .white
-//        activityIndicator.startAnimating()
-//        activityIndicator.center = view.center
-//        activityIndicator.hidesWhenStopped = true
-//
-//        view.addSubview(activityIndicator)
-//
-//        return activityIndicator
-//    }
+    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+
+        view.addView(activityIndicator)
+
+        return activityIndicator
+    }
 
 }
 
