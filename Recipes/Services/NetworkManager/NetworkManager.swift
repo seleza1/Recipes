@@ -15,28 +15,39 @@ enum NetworkError: Error {
 
 final class NetworkManager {
 
-    func getSearchRecipes(url: String, completion: @escaping(Result<[Resultss], NetworkError>) -> Void) {
-        guard let url = URL(string: url) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.invalidURL))
-                return
-            }
-            
-            // String(data: data, encoding: .utf8).map { print($0) }
-            
-            do {
-                let json = try JSONDecoder().decode(Recipesss.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(json.results))
-                }
-            } catch {
-                completion(.failure(.decodingError))
-            }
-        }.resume()
-        
+    func getSearchRecipes(url: String) async throws -> [Resultss] { // throws error
+        guard let url = URL(string: url) else {
+            throw NetworkError.invalidURL
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        guard let json = try? JSONDecoder().decode(Recipesss.self, from: data) else {
+            throw NetworkError.decodingError
+        }
+        return json.results
     }
+
+//    func getSearchRecipes(url: String, completion: @escaping(Result<[Resultss], NetworkError>) -> Void) {
+//        guard let url = URL(string: url) else { return }
+//
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            guard let data = data else {
+//                completion(.failure(.invalidURL))
+//                return
+//            }
+//
+//            // String(data: data, encoding: .utf8).map { print($0) }
+//
+//            do {
+//                let json = try JSONDecoder().decode(Recipesss.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(.success(json.results))
+//                }
+//            } catch {
+//                completion(.failure(.decodingError))
+//            }
+//        }.resume()
+//
+//    }
 
     func fetchImage(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -74,18 +85,6 @@ final class NetworkManager {
         }.resume()
 
     }
-    
-    func async(url: String) async throws -> [Resultss] { // throws error
-        guard let url = URL(string: url) else {
-            throw NetworkError.invalidURL
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        guard let json = try? JSONDecoder().decode(Recipesss.self, from: data) else {
-            throw NetworkError.decodingError
-        }
-        return json.results
-    }
-
 }
 
 

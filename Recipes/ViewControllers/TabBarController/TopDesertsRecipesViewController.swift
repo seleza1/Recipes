@@ -93,19 +93,15 @@ final class TopDesertsRecipesViewController: UIViewController {
     }
 
     private func getRandomRecipes() {
-
         Task {
             let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
-
             do {
-                randomRecipe = try await networkManager.async(url: url)
+                randomRecipe = try await networkManager.getSearchRecipes(url: url)
                 collectionView?.reloadData()
             } catch {
-
+                print(error)
             }
         }
-
-
 //
 //        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
 //        networkManager.getSearchRecipes(url: url) { [weak self] result in
