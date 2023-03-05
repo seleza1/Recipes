@@ -78,17 +78,10 @@ class CollectionViewCell: UICollectionViewCell {
 
 
     private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
-        if let image = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
-            print("image", url.lastPathComponent)
-            completion(.success(image))
-            return
-        }
         networkManager.fetchImage(from: url) { result in
             switch result {
             case .success(let imageData):
                 guard let uiImage = UIImage(data: imageData) else { return }
-                ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
-                print(url.lastPathComponent)
                 completion(.success(uiImage))
             case .failure(let error):
                 print(error)
