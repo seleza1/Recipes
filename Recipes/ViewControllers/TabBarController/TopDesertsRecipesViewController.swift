@@ -96,10 +96,14 @@ final class TopDesertsRecipesViewController: UIViewController {
             case .success(let recipe):
                 self?.randomRecipe = recipe
                 self?.activityIndicator.stopAnimating()
-                self?.collectionView?.reloadData()
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+
+                }
             case .failure( _):
                 DispatchQueue.main.async {
                     self?.uiView.isHidden = false
+                    print("error")
                 }
             }
         }
@@ -160,6 +164,7 @@ extension TopDesertsRecipesViewController {
     private func updateUi() {
         uiView.isHidden = true
         activityIndicator.startAnimating()
+        title = "Top deserts"
 
     }
 
