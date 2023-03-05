@@ -87,32 +87,44 @@ final class TopDesertsRecipesViewController: UIViewController {
         addTarget()
     }
 
-    @objc func getAgain() {
+    @objc func getAgain() async {
         uiView.isHidden = true
-        getRandomRecipes()
+         getRandomRecipes()
     }
 
     private func getRandomRecipes() {
 
-        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
-        networkManager.getSearchRecipes(url: url) { [weak self] result in
-            switch result {
+        Task {
+            let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
 
-            case .success(let recipes):
-                self?.randomRecipe = recipes
-                self?.activityIndicator.stopAnimating()
-                DispatchQueue.main.async {
-                    self?.collectionView?.reloadData()
-                }
-            case .failure( _):
-                print("error")
-                DispatchQueue.main.async {
-                    self?.uiView.isHidden = false
-//                    self?.presentSimpleAlert(title: "Error", message: "problems with connection")
-//                    self?.activityIndicator.stopAnimating()
-                }
+            do {
+                randomRecipe = try await networkManager.async(url: url)
+                collectionView?.reloadData()
+            } catch {
+
             }
         }
+
+
+//
+//        let url: String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1e87d8aad28344b6a87cdb89464059fb&query=\(searchBarText)&number=1"
+//        networkManager.getSearchRecipes(url: url) { [weak self] result in
+//            switch result {
+//
+//            case .success(let recipes):
+//                self?.randomRecipe = recipes
+//                self?.activityIndicator.stopAnimating()
+//                DispatchQueue.main.async {
+//                    self?.collectionView?.reloadData()
+//                }
+//            case .failure( _):
+//                print("error")
+//                DispatchQueue.main.async {
+//                    self?.uiView.isHidden = false
+//
+//                }
+//            }
+//        }
     }
 }
 
