@@ -113,9 +113,13 @@ extension ListOfRecipesViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.idMainTableViewCell, for: indexPath) as? MainTableViewCell else {
+            return UITableViewCell()
+        }
         let indexPath = randomRecipes[indexPath.row]
-        cell.configure(recipe: indexPath)
+
+        cell.configure(name: indexPath, image: indexPath)
+        // cell.configure(recipe: indexPath)
 
         return cell
     }
@@ -172,7 +176,7 @@ extension ListOfRecipesViewController {
     }
 
     private func updateTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.idMainTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 115
